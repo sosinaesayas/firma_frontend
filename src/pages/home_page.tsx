@@ -4,10 +4,10 @@ import { Outlet } from 'react-router-dom';
 
 const HomePage: React.FC = () => (
   <div className='w-full h-screen bg-white shadow-md fixed flex'>
-    <div className='w-1/5'>
+    <div className='w-1/6 '>
       <Sidebar />
     </div>
-    <div className='flex-grow bg-red p-4 overflow-auto'>
+    <div className='flex-grow bg-red p-8 overflow-auto'>
       <Outlet />
     </div>
   </div>

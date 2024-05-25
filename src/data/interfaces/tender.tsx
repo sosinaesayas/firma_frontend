@@ -4,7 +4,10 @@ interface TenderTableData{
     description : string ,   
     tenderType : string ,
     endDate : string , 
-    status : string 
+    status : string ,
+    deadlineInDays : number ,
+    tenderCategory : string[],
+    cpoAmount: number ,
 }
 
 

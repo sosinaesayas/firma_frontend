@@ -1,81 +1,92 @@
-import TenderTableData from "../../../data/interfaces/tender";
-import React from 'react';
-import "../styles/table_styles.css"
-import {
-  Table,
-  TableBody,
-  TableCaption,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table";
-import { FaEye } from 'react-icons/fa';
-import { Button } from '@/components/ui/button';
-
-const getStatusColor = (status  : string) => {
-  switch (status) {
-    case "Pending":
-      return "yellow";
-    case "Published":
-      return "green";
-    case "Cancelled":
-      return "red";
-    case "Closed":
-      return "gray";
-    case "Opened":
-      return "blue";
-    case "Awarded":
-      return "purple";
-    default:
-      return "black";
-  }
-};
+import { useState } from 'react';
+import { IoIosMore } from 'react-icons/io';
+import Pagination from '../../../components/common/Pagination';
+import TenderTableData from '@/data/interfaces/tender';
 
 interface TenderTableProps {
   data: TenderTableData[];
 }
 
-export const TenderTable: React.FC<TenderTableProps> = ({ data }) => {
-console.log("data in tender table is")
-console.log(data)
-  return (
-    <Table className="tender-table">
-      <TableCaption>A list of recent tenders.</TableCaption>
-      <TableHeader>
-        <TableRow>
-          <TableHead>Title</TableHead>
-          <TableHead>Description</TableHead>
-          <TableHead>Type</TableHead>
-          <TableHead>Closing Time</TableHead>
-          <TableHead>Status</TableHead>
-          <TableHead>Actions</TableHead>
-          <TableHead>View</TableHead>
-        </TableRow>
-      </TableHeader>
-      <TableBody>
-        {data.map((tender, index) => (
-          <TableRow key={tender.id} className={index % 2 === 0 ? "even-row" : "odd-row"}>
-            <TableCell>{tender.title}</TableCell>
-            <TableCell className="description-cell">{tender.description}</TableCell>
-            <TableCell>{tender.tenderType}</TableCell>
-            <TableCell>{
-              // parse tender.endDate to 12 hour format,and date like June 23, 2021, 12:00 PM
-              new Date(tender.endDate).toLocaleDateString('en-US', {
-                year: 'numeric', month: 'long', day: 'numeric'
-              }) + ", " + new Date(tender.endDate).toLocaleTimeString('en-US', {
-                hour: 'numeric', minute: '2-digit'
-              })
+const TenderTable = ({ data }: TenderTableProps) => {
+  const [activeRowId, setActiveRowId] = useState<string | null>(null);
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 15;
 
-              }</TableCell>
-            <TableCell>
-              <span className="status-dot" style={{ backgroundColor: getStatusColor(tender.status) }}></span> {tender.status}
-            </TableCell>
-            <TableCell><Button>Edit</Button></TableCell>
-            <TableCell><FaEye /></TableCell>
-          </TableRow>
-        ))}
-      </TableBody>
-    </Table>
+  const handleClickAction = (tenderId: string) => {
+    if (activeRowId === tenderId) {
+      setActiveRowId(null);
+    } else {
+      setActiveRowId(tenderId);
+    }
+  };
+
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentItems = data.slice(indexOfFirstItem, indexOfLastItem);
+
+  const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
+
+  return (
+    <div className="table-responsive p-1 pb-4">
+      <table className="table-hover">
+        <thead>
+          <tr>
+            <th>Tender ID</th>
+            <th>Dealine in Days</th>
+            <th>Tender Name</th>
+            <th>Tender Type</th>
+            <th>Tender Category</th>
+            <th>CPO/Bid Bond Amount</th>
+            <th>Status</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          {currentItems.map((data) => {
+            return (
+              <tr key={data.id} className="relative">
+                <td>{data.id}</td>
+                <td className="text-center flex gap-2 items-center justify-center">
+                  <span
+                    className={`w-2 h-2 rounded-full ${data.deadlineInDays < 5 && 'bg-red-400'
+                      } ${data.deadlineInDays < 10 && data.deadlineInDays > 5 && 'bg-yellow-400'
+                      } ${data.deadlineInDays > 10 && 'bg-green-400'}`}
+                  ></span>
+                  <span>{data.deadlineInDays}</span>
+                </td>
+                <td>{data.title}</td>
+                <td>{data.tenderType}</td>
+                <td>{data.tenderCategory}</td>
+                <td>{data.cpoAmount} Birr</td>
+                <td>{data.status}</td>
+                <td
+                  className="text-center cursor-pointer text-2xl"
+                  onClick={() => handleClickAction(data.id)}
+                >
+                  <IoIosMore />
+                </td>
+                {activeRowId === data.id && (
+                  <div className="absolute z-30 border border-slate-200 right-10 -bottom-16 bg-white px-6 py-2 rounded-lg shadow">
+                    <ul className="text-sm flex text-gray-500 flex-col items-center gap-4">
+                      <li className="hover:text-blue-400 cursor-pointer">Download</li>
+                      <li className="hover:text-blue-400 cursor-pointer">Print</li>
+                      <li className="hover:text-red-400 cursor-pointer">Delete</li>
+                    </ul>
+                  </div>
+                )}
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
+      <Pagination
+        itemsPerPage={itemsPerPage}
+        totalItems={data.length}
+        currentPage={currentPage}
+        paginate={paginate}
+      />
+    </div>
   );
 };
+
+export default TenderTable;

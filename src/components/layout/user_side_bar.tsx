@@ -4,7 +4,7 @@ const Sidebar: React.FC = () => {
   const [isTendersOpen, setIsTendersOpen] = useState(false);
 
   return (
-    <div className="w-64 h-screen bg-gray-100 text-gray-900 border-r border-gray-300">
+    <div className="w-full h-screen bg-gray-100 text-gray-900 border-r border-gray-300">
       <div className="p-4">
         <h1 className="text-xl font-bold">Admin Dashboard</h1>
       </div>
