@@ -1,0 +1,74 @@
+.formDiv{
+    margin:110px;
+    display: flex;
+    justify-content: center;
+}
+
+.inputs{
+    margin-top: 15px;
+    margin-bottom: 15px;
+    width: 500px;
+    height: 50px;
+    border: 1px solid rgb(175, 175, 175);
+    border-radius: 10px;
+    font-size: larger;
+    padding-left: 13px;
+}
+.checkbox{
+    margin-right: 380px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: start;
+}
+.checkboxP{
+    margin-bottom: 2px;
+    margin-left: 5px;
+}
+.btnn{
+    margin-top: 30px;
+    margin-bottom: 20px;
+    width: 500px;
+    height: 45px;
+    border: 1px solid rgb(200, 200, 200);
+    border-radius: 10px;
+    background-color: rgb(232, 232, 232);
+    font-size: x-large;
+}
+.btnn:hover{
+background-color: rgb(255, 255, 255);
+transform: scale(1.04);
+transition: 0.5s;
+}
+.signup{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.signupLink{
+    font-weight: 800;
+    margin-bottom: 4px;
+    margin-left: 12px;
+}
+.signupLink:hover{
+    border-radius: 10px;
+    background-color: rgb(233, 233, 233);
+}
+
+@media (max-width:768px){
+    .inputs{      
+        width: 300px;
+        height: 50px;
+    }
+
+    .btnn{
+        width: 300px;
+        height: 45px;
+    }
+    .checkbox{
+        display: flex;
+        flex-direction: row;
+        margin-left: 300px;    
+    }
+
+}
