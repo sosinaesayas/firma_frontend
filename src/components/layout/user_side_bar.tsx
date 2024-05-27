@@ -8,8 +8,7 @@ const Sidebar: React.FC = () => {
       <div className="p-4">
         <h1 className="text-xl font-bold">Admin Dashboard</h1>
       </div>
-      <nav className="mt-2">
-        
+      <nav className="mt-2">       
         <div>
           <button 
             className="flex items-center justify-between w-full py-2.5 px-4 rounded transition duration-200 hover:bg-gray-200"
@@ -28,7 +27,7 @@ const Sidebar: React.FC = () => {
           </button>
           {isTendersOpen && (
             <div className="pl-4">
-              <a href="#" className="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-200">Tenders</a>
+              <a href="/tenders" className="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-200">Tenders</a>
               <a href="#" className="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-200">Applications</a>
             </div>
           )}

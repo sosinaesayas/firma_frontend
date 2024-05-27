@@ -1,5 +1,5 @@
-import  {TenderFormData} from '../interfaces/tenderFormData';
-const initialPublicTender : TenderFormData ={
+import  {LimitedTenderData} from '../interfaces/limitedData';
+const initialLimitedTender : LimitedTenderData ={
     tender_id: "",
     startDate: "",
     endDate: "",
@@ -16,8 +16,9 @@ const initialPublicTender : TenderFormData ={
     currency: "ETB",
     region: "Addis Ababa",
     products: [],
-    tenderType: "Public",
+    tenderType: "Limited",
     remark: "-",
+    companies:[],
   };
 
-  export default initialPublicTender;
+  export default initialLimitedTender;

@@ -1,6 +1,6 @@
 import { ProductsData } from "./productsData";
 
-export interface TenderFormData {
+export interface LimitedTenderData {
     tender_id: string;
     startDate: string;
     endDate: string;
@@ -18,6 +18,7 @@ export interface TenderFormData {
     region: string;
     products: ProductsData[];
     tenderType : string, 
-    remark : string
+    remark : string,
+    companies: string[]
   }
   

@@ -35,11 +35,9 @@ const initialState: ProductsState = {
   status: 'idle',
   error: null,
 };
-const token =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNlb0BnbWFpbC5jb20iLCJyb2xlIjoiQWRtaW4tQ0VPIiwiaWF0IjoxNzE2NTA2NjI1LCJleHAiOjE3MTc4MDI2MjV9.tTB075DVxh9pCazVNIZh1x-Wx6bqtVuS3RmdnmuECcI";
 
 export const fetchProducts = createAsyncThunk('', async () => {
-  const response = await fetchProductsApi(token);
+  const response = await fetchProductsApi();
   return response;
 });
 

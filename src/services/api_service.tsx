@@ -6,17 +6,21 @@ export const api = axios.create({
 
 export const postRequest = async (url: string, data: any) => {
   const token = localStorage.getItem("token");
+  console.log("token is " + token )
   const response = await api.post(url, data, {
     headers: {
       Authorization: `Bearer ${token}`,
     },
   });
+
+  console.log(response)
   return response;
 };
 
 
 export const getRequest = async (url: string) => {
   const token = localStorage.getItem("token");
+  
   const response = await api.get(url, {
     headers: {
       Authorization: `Bearer ${token}`,
