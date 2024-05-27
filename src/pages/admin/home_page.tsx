@@ -5,7 +5,7 @@ import { Outlet } from 'react-router-dom';
 
 const HomePage: React.FC = () => (
   <div className='w-full h-screen bg-white shadow-md fixed flex'>
-    <div className='w-1/5'>
+    <div className='w-1/6 '>
       <Sidebar />
     </div>
     {/* <div> <TenderDropdown /></div> */}
