@@ -1,8 +1,13 @@
 import AddDirectPurchaseTender from "../../features/create_tenders/components/direct_purchase/add_direct_purchase";
+import TenderDropdown from "../../features/create_tenders/components/tender_dropdown";
+
 const CreatDirectPurchaseTender: React.FC = () => {
   return (
     <>
-    <h1 className="text-2xl font-bold mb-4">Add a New Direct Purchase</h1>
+    <div className="flex justify-between items-center mb-4">
+      <h1 className="text-2xl font-bold">Add a New Direct Purchase Tender</h1>
+      <TenderDropdown />
+    </div>
      <AddDirectPurchaseTender/>
 
     </>

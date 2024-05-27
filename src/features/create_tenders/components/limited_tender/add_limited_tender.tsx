@@ -23,7 +23,7 @@ const AddLimitedTender = () => {
     useState<LimitedTenderData>(initialLimitedTender);
     useEffect(() => {
       if (formTenderStatus === "succeeded") {
-        navigate("/home");
+        navigate("/tender-table");
         // dispatch(fetchTenders());
       }
     }, [dispatch, formTenderStatus, navigate]);
@@ -34,7 +34,7 @@ const AddLimitedTender = () => {
     try {
       const resultAction = await dispatch(postLimitedTenderForm(formData));
       if (postLimitedTenderForm.fulfilled.match(resultAction)) {
-        navigate("/home");
+        navigate("/tender-table");
         dispatch(fetchTenders());
       } else if (postLimitedTenderForm.rejected.match(resultAction)) {
         console.error(

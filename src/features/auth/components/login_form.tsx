@@ -15,7 +15,7 @@ const LoginForm: React.FC = () => {
 
   useEffect(() => {
     if (loginStatus === "succeeded") {
-      navigate("/home");
+      navigate("/add-public-tender");
     }
   }, [loginStatus, navigate]);
 

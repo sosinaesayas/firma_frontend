@@ -12,7 +12,7 @@ import { regions } from "../../../../data/constants/regions";
 import initialPublicTender from "../../../../data/constants/public_tender_initial";
 
 
-const TenderForms = () => {
+const AddPublicTender = () => {
   const dispatch: AppDispatch = useDispatch();
   const navigate = useNavigate();
   const formTenderError = useSelector(
@@ -24,7 +24,7 @@ const TenderForms = () => {
   const [formData, setFormData] = useState<TenderFormData>(initialPublicTender);
   useEffect(() => {
     if (formTenderStatus === "succeeded") {
-      navigate("/home");
+      navigate("/tender-table");
       dispatch(fetchTenders());
     }
   }, [dispatch, formTenderStatus, navigate]);
@@ -324,4 +324,4 @@ const TenderForms = () => {
   );
 };
 
-export default TenderForms;
+export default AddPublicTender;

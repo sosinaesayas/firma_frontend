@@ -13,7 +13,7 @@ const AddExpressionInterest = () => {
 
   useEffect(() => {
     if (status === 'succeeded') {
-      navigate("/home");
+      navigate("/tender-table");
     }
   }, [status, navigate]);
 
