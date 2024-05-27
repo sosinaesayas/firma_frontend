@@ -7,7 +7,7 @@ import Select from 'react-select';
 
 export const ProductsForm: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>();
-  // const products = useSelector((state: RootState) => state.products.products);
+  const products = useSelector((state: RootState) => state.products.products);
   const productsStatus = useSelector(
     (state: RootState) => state.products.status
   );

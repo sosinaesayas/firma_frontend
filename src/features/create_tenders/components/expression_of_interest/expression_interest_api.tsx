@@ -1,10 +1,10 @@
 import {postRequest, getRequest} from '../../../../services/api_service';
-import { TenderFormData } from "../../../../data/interfaces/tenderFormData";
+import {  ExpressionInterestData } from "../../../../data/interfaces/expressionInterestData";
 
-export const postTenderToApi = async (form: TenderFormData) => {
+export const postTenderToApi = async (form: ExpressionInterestData) => {
  
     console.log("Sending tender form submission request with data:", form);
-    const response = await postRequest('/admin/create-tendor', form);
+    const response = await postRequest('/admin/create-expression-of-interest', form);
     return response;
   }
 

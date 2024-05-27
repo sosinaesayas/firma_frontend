@@ -10,6 +10,7 @@ const HomePage: React.FC = () => (
     <div className='flex-grow bg-red p-4 overflow-auto'>
       <Outlet />
     </div>
+    
   </div>
 );
 

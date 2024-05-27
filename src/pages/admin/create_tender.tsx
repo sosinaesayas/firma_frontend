@@ -1,5 +1,5 @@
 
-import TenderForms from "../../features/create_tenders/components/tender_forms/tender_forms";
+import TenderForms from "../../features/create_tenders/components/public_tender/public_tender";
 
 
 
