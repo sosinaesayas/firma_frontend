@@ -6,6 +6,8 @@ import Tenders from "../pages/admin/tenders";
 import CreateTender from "../pages/admin/create_tender";
 import PublicTender from '../pages/public_tender';
 import Product from "../pages/products_trial";
+import SignUp from '../pages/company/SignUp';
+
 const RoutesConfig: React.FC = () => {
   const routes = useRoutes([
     { 
@@ -18,6 +20,7 @@ const RoutesConfig: React.FC = () => {
 
     { path: "/login", element: <LoginPage /> },
     { path: "/signup", element: <SignupPage /> },
+    { path: "/company_signup", element: <SignUp /> },
    
     { 
       path: "create_tender", 
