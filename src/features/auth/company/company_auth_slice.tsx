@@ -1,9 +1,8 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-interface CompanyAuthState {
+type CompanyAuthState = {
   isEmailVerified: boolean;
   isPhoneVerified: boolean;
-  isPasswordMatch: boolean;
   representativeName: string;
   email: string;
   phone: string;
@@ -30,22 +29,21 @@ interface CompanyAuthState {
 const initialState: CompanyAuthState = {
   isEmailVerified: false,
   isPhoneVerified: false,
-  isPasswordMatch: false,
-  representativeName: "",
-  email: "",
+  representativeName: "kim",
+  email: "jo@doe.com",
   phone: "",
-  country: "",
-  password: "",
-  confirmPassword: "",
+  country: "Ethiopia",
+  password: "password1234",
+  confirmPassword: "password1234",
   role: "",
-  companyName: "",
-  businessRegistrationNumber: "",
-  businessLicenseNumber: "",
-  tinNumber: "",
-  vatNumber: "",
-  yearOfEstablishment: "",
-  servicesProvided: "",
-  address: "",
+  companyName: "EBS",
+  businessRegistrationNumber: "123456",
+  businessLicenseNumber: "654321",
+  tinNumber: "147852",
+  vatNumber: "258741",
+  yearOfEstablishment: "2000",
+  servicesProvided: "media",
+  address: "addis ababa",
   logo: null,
   legalDocument: null,
   businessLicenseNo: null,
@@ -64,9 +62,6 @@ const companyAuthSlice = createSlice({
     ) => {
       state[action.payload.field] = action.payload.value;
     },
-    setIsPasswordMatch: (state) => {
-      state.isPasswordMatch = state.password === state.confirmPassword;
-    },
     setIsEmailVerified: (state, action: PayloadAction<boolean>) => {
       state.isEmailVerified = action.payload;
     },
@@ -75,7 +70,10 @@ const companyAuthSlice = createSlice({
     },
     setFiles: (
       state,
-      action: PayloadAction<{ field: "logo" | "legalDocument"; file: File }>
+      action: PayloadAction<{
+        field: "logo" | "legalDocument" | "businessRegisterNo" | "businessLicenseNo" | "vatNo" | "tinNo";
+        file: File;
+      }>
     ) => {
       state[action.payload.field] = action.payload.file;
     },
@@ -84,7 +82,6 @@ const companyAuthSlice = createSlice({
 
 export const {
   setField,
-  setIsPasswordMatch,
   setIsEmailVerified,
   setIsPhoneVerified,
   setFiles,
