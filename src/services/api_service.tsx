@@ -4,13 +4,31 @@ export const api = axios.create({
   baseURL: "http://localhost:3000/api",
 });
 
-export const postRequest = async (url: string, data: any) => {
+// export const postRequest = async (url: string, data: any) => {
+//   const token = localStorage.getItem("token");
+//   const response = await api.post(url, data, {
+//     headers: {
+//       Authorization: `Bearer ${token}`,
+//     },
+//   });
+//   return response;
+// };
+
+export const postRequest = async (
+  url: string,
+  data: any,
+  headers: string | null
+) => {
   const token = localStorage.getItem("token");
+  console.log("token is " + token);
   const response = await api.post(url, data, {
     headers: {
+      "Content-Type": headers ?? "application/json",
       Authorization: `Bearer ${token}`,
     },
   });
+
+  console.log(response);
   return response;
 };
 
