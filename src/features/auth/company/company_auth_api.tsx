@@ -3,7 +3,6 @@ import { postRequest } from "../../../services/api_service";
 interface CompanyAuthState {
   isEmailVerified: boolean;
   isPhoneVerified: boolean;
-  isPasswordMatch: boolean;
   representativeName: string;
   email: string;
   phone: string;
@@ -20,18 +19,18 @@ interface CompanyAuthState {
   servicesProvided: string;
   address: string;
   businessLicenseNo: File | null;
-  businessRegisterNo: File | null;
+  businessRegisterNo: File | null ;
   vatNo: File | null;
   tinNo: File | null;
-  logo: File | null;
-  legalDocument: File | null;
+  logo: File | null ;
+  legalDocument: File | null ;
 }
 
 export const signUpCompany = async (data: CompanyAuthState) => {
   const formData = new FormData();
   formData.append("representativeName", data.representativeName);
   formData.append("email", data.email);
-  formData.append("phone", data.phone);
+  formData.append("phone1", data.phone);
   formData.append("country", data.country);
   formData.append("password", data.password);
   formData.append("confirmPassword", data.confirmPassword);
@@ -44,45 +43,43 @@ export const signUpCompany = async (data: CompanyAuthState) => {
   formData.append("businessLicenseNumber", data.businessLicenseNumber);
   formData.append("tinNumber", data.tinNumber);
   formData.append("vatNumber", data.vatNumber);
-  formData.append("yearOfEstablishment", data.yearOfEstablishment);
-  formData.append("servicesProvided", data.servicesProvided);
+  formData.append("dateOfEstablishment", data.yearOfEstablishment);
+  formData.append("businessSectors", data.servicesProvided);
   formData.append("address", data.address);
-  formData.append("logo", data.logo as Blob);
-  formData.append("legalDocument", data.legalDocument as Blob);
-  formData.append("businessLicenseNo", data.businessLicenseNo as Blob);
-  formData.append("businessRegisterNo", data.businessRegisterNo as Blob);
-  formData.append("vatNo", data.vatNo as Blob);
-  formData.append("tinNo", data.tinNo as Blob);
+  formData.append("logo", data.logo as File);
+  formData.append("legalDocument", data.legalDocument as File);
+  formData.append("businessLicenseNo", data.businessLicenseNo as File);
+  formData.append("businessRegisterNo", data.businessRegisterNo as File);
+  formData.append("vatNo", data.vatNo as File);
+  formData.append("tinNo", data.tinNo as File);
 
   const toBeSent = {
-    email: formData.get("email"),
-    phone1: formData.get("phone"),
-    country: formData.get("country"),
-    password: formData.get("password"),
-    companyName: formData.get("companyName"),
-    businessRegistrationNumber: formData.get("businessRegistrationNumber"),
-    businessLicenseNumber: formData.get("businessLicenseNumber"),
-    tinNumber: formData.get("tinNumber"),
-    vatNumber: formData.get("vatNumber"),
-    dateOfEstablishment: formData.get("yearOfEstablishment"),
-    businessSectors: formData.get("servicesProvided"),
-    address: formData.get("address"),
-    coverPhoto: formData.get("logo"),
-    legalDocument: formData.get("legalDocument"),
-    businessLicenseNo: formData.get("businessLicenseNo"),
-    businessRegisterNo: formData.get("businessRegisterNo"),
-    vatNo: formData.get("vatNo"),
-    tinNo: formData.get("tinNo"),
+    email: data.email,
+    phone1: data.phone,
+    country: data.country,
+    password: data.password,
+    companyName: data.companyName,
+    businessRegistrationNumber: data.businessRegistrationNumber,
+    businessLicenseNumber: data.businessLicenseNumber,
+    tinNumber: data.tinNumber,
+    vatNumber: data.vatNumber,
+    dateOfEstablishment: data.yearOfEstablishment,
+    businessSectors: data.servicesProvided,
+    address: data.address,
+    coverPhoto: data.logo,
+    legalDocument: data.legalDocument,
+    businessLicenseNo: data.businessLicenseNo,
+    businessRegisterNo: data.businessRegisterNo,
+    vatNo: data.vatNo,
+    tinNo: data.tinNo,
   };
 
-  console.log("To be sent", toBeSent);
-
   try {
-    const response = await postRequest("/auth/company-signup", toBeSent);
+    const response = await postRequest("/auth/company-signup", toBeSent, "multipart/form-data");
     console.log("Response", response);
     return response.data;
-  } catch (error) {
-    console.log("Error", error);
-    return error;
+  } catch (error: any) {
+    console.log("oops error", error);
+    return error.response.data;
   }
 };
