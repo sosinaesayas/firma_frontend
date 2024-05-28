@@ -26,7 +26,7 @@ interface CompanyAuthState {
   legalDocument: File | null ;
 }
 
-export const signUpCompany = async (data: CompanyAuthState) => {
+const signUpCompany = async (data: CompanyAuthState) => {
   const formData = new FormData();
   formData.append("representativeName", data.representativeName);
   formData.append("email", data.email);
@@ -83,3 +83,6 @@ export const signUpCompany = async (data: CompanyAuthState) => {
     return error.response.data;
   }
 };
+
+
+export { signUpCompany };

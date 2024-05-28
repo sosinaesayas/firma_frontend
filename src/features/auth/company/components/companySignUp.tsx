@@ -11,7 +11,7 @@ import {
   setIsPhoneVerified,
   setFiles,
 } from "../company_auth_slice";
-import { signUpCompany } from "../company_auth_api";
+import {signUpCompany}  from "../company_auth_api";
 import { setResponseMessage, clearResponseMessage } from "../responseSlice";
 
 const SignUpForm: React.FC = () => {
