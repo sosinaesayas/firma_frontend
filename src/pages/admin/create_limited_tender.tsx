@@ -1,5 +1,5 @@
-import AddLimitedTender from "../../features/create_tenders/components/limited_tender/add_limited_tender";
-import TenderDropdown from "../../features/create_tenders/components/tender_dropdown";
+import AddLimitedTender from "../../features/post_tenders/limited_tender/components/add_limited_tender";
+import TenderDropdown from "../../features/post_tenders/tender_dropdown";
 
 const CreatLimitedTender: React.FC = () => {
   return (

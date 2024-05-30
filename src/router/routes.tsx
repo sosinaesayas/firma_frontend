@@ -9,6 +9,8 @@ import CreatExpressionInterestTender from "../pages/admin/create_expression_inte
 import CreateDirectPurchaseTender from "../pages/admin/create_direct_purchase_tender";
 import TenderSidebarPage from "../pages/admin/tenders_page";
 import Product from "../pages/products_trial";
+import CompanyHomePage from "../pages/company/company_home"
+import BidTender1 from "../pages/company/bid_tender_1"
 
 const RoutesConfig: React.FC = () => {
   const routes = useRoutes([
@@ -27,6 +29,7 @@ const RoutesConfig: React.FC = () => {
       children: [{ path: "", element: <CreatePublicTender /> }],
     },
     { path: "/products", element: <Product /> },
+    { path: "/company-home", element: <CompanyHomePage /> },
     {
       path: "add-limited-tender",
       element: <HomePage />,
@@ -47,6 +50,12 @@ const RoutesConfig: React.FC = () => {
       element: <HomePage />,
       children: [{ path: "", element: <TenderSidebarPage/> }],
     },
+    {
+      path: "bid-tender-1",
+      element: <CompanyHomePage />,
+      children: [{ path: "", element: <BidTender1/> }],
+    },
+  
   ]);
 
   return routes;

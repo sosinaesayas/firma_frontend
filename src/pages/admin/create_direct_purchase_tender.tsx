@@ -1,5 +1,5 @@
-import AddDirectPurchaseTender from "../../features/create_tenders/components/direct_purchase/add_direct_purchase";
-import TenderDropdown from "../../features/create_tenders/components/tender_dropdown";
+import AddDirectPurchaseTender from "../../features/post_tenders/direct_purchase/components/add_direct_purchase";
+import TenderDropdown from "../../features/post_tenders/tender_dropdown";
 
 const CreatDirectPurchaseTender: React.FC = () => {
   return (

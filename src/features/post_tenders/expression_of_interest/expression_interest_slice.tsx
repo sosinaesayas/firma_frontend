@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
 import { postTenderToApi } from './expression_interest_api';
-import { ExpressionInterestData } from '../../../../data/interfaces/expressionInterestData';
+import {  ExpressionInterestData } from "../../../data/interfaces/expressionInterestData";
 
 interface ExpressionInterestState {
   status: 'idle' | 'loading' | 'succeeded' | 'failed';

@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
 import { postLimitedTenderToApi } from './limited_tender_api';
-import { LimitedTenderData } from '../../../../data/interfaces/limitedData';
+import { LimitedTenderData } from '../../../data/interfaces/limitedData';
 
 interface LimitedTenderState {
   status: 'idle' | 'loading' | 'succeeded' | 'failed';

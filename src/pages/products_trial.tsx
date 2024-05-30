@@ -1,4 +1,4 @@
-import ProductsForm from "../features/create_tenders/components/products_form/products_form";
+import ProductsForm from "../features/post_tenders/products_form/components/products_form";
 
 const Product: React.FC = () => {
   return (
