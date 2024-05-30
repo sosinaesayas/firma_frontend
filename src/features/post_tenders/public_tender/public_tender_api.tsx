@@ -1,5 +1,5 @@
-import {postRequest, getRequest} from '../../../../services/api_service';
-import { TenderFormData } from "../../../../data/interfaces/tenderFormData";
+import {postRequest, getRequest} from '../../../services/api_service';
+import { TenderFormData } from "../../../data/interfaces/tenderFormData";
 
 export const postTenderToApi = async (form: TenderFormData) => {
  

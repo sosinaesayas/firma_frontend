@@ -1,5 +1,5 @@
-import TenderDropdown from "../../features/create_tenders/components/tender_dropdown";
-import AddExpressionInterest from "../../features/create_tenders/components/expression_of_interest/add_expression_interest";
+import TenderDropdown from "../../features/post_tenders/tender_dropdown";
+import AddExpressionInterest from "../../features/post_tenders/expression_of_interest/components/add_expression_interest";
 const CreatExpressionInterestTender: React.FC = () => {
   return (
     <>

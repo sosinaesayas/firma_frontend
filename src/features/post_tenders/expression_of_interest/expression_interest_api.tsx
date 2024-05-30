@@ -1,5 +1,5 @@
-import {postRequest, getRequest} from '../../../../services/api_service';
-import {  ExpressionInterestData } from "../../../../data/interfaces/expressionInterestData";
+import {postRequest, getRequest} from '../../../services/api_service';
+import {  ExpressionInterestData } from "../../../data/interfaces/expressionInterestData";
 
 export const postTenderToApi = async (form: ExpressionInterestData) => {
  

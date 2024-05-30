@@ -1,4 +1,4 @@
-import { TenderFormData } from "../../../../data/interfaces/tenderFormData.tsx";
+import { TenderFormData } from "../../../data/interfaces/tenderFormData.tsx";
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { postTenderToApi ,fetchProducts } from "./public_tender_api.tsx";
 

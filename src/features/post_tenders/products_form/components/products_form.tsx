@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { fetchProducts } from "../products_form/products_form_slice";
+import { fetchProducts } from "../products_form_slice";
 import { RootState } from "../../../../store/store";
 import { AppDispatch } from "../../../../store/store";
 import Select from 'react-select';

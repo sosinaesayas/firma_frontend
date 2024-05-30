@@ -1,5 +1,5 @@
-import { postRequest, getRequest } from '../../../../services/api_service';
-import { LimitedTenderData } from "../../../../data/interfaces/limitedData";
+import { postRequest, getRequest } from '../../../services/api_service';
+import { LimitedTenderData } from "../../../data/interfaces/limitedData";
 
 export const postLimitedTenderToApi = async (form: LimitedTenderData) => {
   console.log("Sending limited tender form submission request with data:", form);

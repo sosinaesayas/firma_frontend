@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState, AppDispatch } from "../store/store";
-import { postTenderForm } from '../features/create_tenders/components/expression_of_interest/expression_interest_slice';
+import { postTenderForm } from '../features/post_tenders/expression_of_interest/expression_interest_slice';
 import { ExpressionInterestData } from "../data/interfaces/expressionInterestData";
 
 export const useExpressionInterest = () => {
