@@ -9,7 +9,7 @@ import limitedTenderReducer from "../features/post_tenders/limited_tender/limite
 // import directPurchaseReducer from "../features/create_tenders/components/direct_purchase/direct_purchase_slice"
 
 import formReducer from "../features/auth/company/company_auth_slice";
-
+import getAllTendersForCompanyReducer from "../features/all_tenders/all_tenders_slice";
 const store = configureStore({
   reducer: {
     auth: authReducer,
@@ -19,9 +19,10 @@ const store = configureStore({
     products: productsReducer,
     expressionInterest: expressionInterestReducer,
     limitedTender: limitedTenderReducer,
-    // directPurchase: directPurchaseReducer,
-
     form: formReducer,
+    // directPurchase: directPurchaseReducer
+    getAllTendersForCompany: getAllTendersForCompanyReducer
+
   },
 });
 

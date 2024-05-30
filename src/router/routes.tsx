@@ -12,7 +12,7 @@ import SignUp from "../pages/company/SignUp";
 import ProtectedRoute from "./protected_route";
 import CompanyHomePage from "../pages/company/company_home"
 import BidTender1 from "../pages/company/bid_tender_1"
-
+import AllTenders from "../pages/company/all_tenders"
 const RoutesConfig: React.FC = () => {
   const routes = useRoutes([
     {
@@ -59,6 +59,10 @@ const RoutesConfig: React.FC = () => {
       path : "/company/",
       element :  <CompanyHomePage />,
      children : [
+      {
+        path: "",
+        element: <AllTenders />,
+      },
       {
         path: "bid-tender-1",
         element:<BidTender1/>
