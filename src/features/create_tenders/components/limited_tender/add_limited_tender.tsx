@@ -341,7 +341,7 @@ const AddLimitedTender = () => {
         >
           Add Tender For Approval
         </button>
-        {/* {formTenderError && <p>{formTenderError}</p>} */}
+        {formTenderError && <p>{formTenderError}</p>}
       </form>
     </div>
   );

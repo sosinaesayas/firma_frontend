@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
-
+import { useNavigate } from 'react-router-dom';
 const Sidebar: React.FC = () => {
   const [isTendersOpen, setIsTendersOpen] = useState(false);
+  const navigate = useNavigate();
 
   return (
     <div className="w-full h-screen bg-gray-100 text-gray-900 border-r border-gray-300">
       <div className="p-4">
-        <h1 className="text-xl font-bold">Admin Dashboard</h1>
+        <h1 className="text-xl font-bold hover:cursor-pointer" onClick={()=>{
+          navigate('/admin/')
+        }}>Admin Dashboard</h1>
       </div>
       <nav className="mt-2">       
         <div>
@@ -27,7 +30,7 @@ const Sidebar: React.FC = () => {
           </button>
           {isTendersOpen && (
             <div className="pl-4">
-              <a href="/tenders" className="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-200">Tenders</a>
+              <a href="/admin/post-tenders" className="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-200">Tenders</a>
               <a href="#" className="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-200">Applications</a>
             </div>
           )}
