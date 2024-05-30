@@ -26,7 +26,7 @@ interface CompanyAuthState {
   legalDocument: File | null ;
 }
 
-const signUpCompany = async (data: CompanyAuthState) => {
+export const signUpCompany = async (data: CompanyAuthState) => {
   const formData = new FormData();
   formData.append("representativeName", data.representativeName);
   formData.append("email", data.email);
@@ -76,13 +76,11 @@ const signUpCompany = async (data: CompanyAuthState) => {
 
   try {
     const response = await postRequest("/auth/company-signup", toBeSent, "multipart/form-data");
-    console.log("Response", response);
-    return response.data;
+    // console.log("Response", response);
+    return response;
   } catch (error: any) {
-    console.log("oops error", error);
-    return error.response.data;
+    console.log("oops error", error.response.data);
+    return error.response;
   }
 };
 
-
-export { signUpCompany };
