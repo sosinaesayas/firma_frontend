@@ -7,6 +7,9 @@ import productsReducer from "../features/create_tenders/components/products_form
 import expressionInterestReducer from "../features/create_tenders/components/expression_of_interest/expression_interest_slice";
 import limitedTenderReducer from "../features/create_tenders/components/limited_tender/limited_tender_slice";
 // import directPurchaseReducer from "../features/create_tenders/components/direct_purchase/direct_purchase_slice"
+
+import formReducer from "../features/auth/company/company_auth_slice";
+
 const store = configureStore({
   reducer: {
     auth: authReducer,
@@ -17,6 +20,8 @@ const store = configureStore({
     expressionInterest: expressionInterestReducer,
     limitedTender: limitedTenderReducer,
     // directPurchase: directPurchaseReducer,
+
+    form: formReducer,
   },
 });
 

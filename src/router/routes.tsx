@@ -1,7 +1,6 @@
 import { useRoutes } from "react-router-dom";
 import HomePage from "../pages/admin/home_page";
 import LoginPage from "../pages/login";
-import SignupPage from "../pages/signup";
 import Tenders from "../pages/admin/table_tenders";
 import CreatePublicTender from "../pages/admin/create_public_tender";
 import CreateLimitedTender from "../pages/admin/create_limited_tender";
@@ -9,6 +8,8 @@ import CreatExpressionInterestTender from "../pages/admin/create_expression_inte
 import CreateDirectPurchaseTender from "../pages/admin/create_direct_purchase_tender";
 import TenderSidebarPage from "../pages/admin/tenders_page";
 import Product from "../pages/products_trial";
+import SignUp from '../pages/company/SignUp';
+
 
 const RoutesConfig: React.FC = () => {
   const routes = useRoutes([
@@ -19,7 +20,8 @@ const RoutesConfig: React.FC = () => {
     },
 
     { path: "/", element: <LoginPage /> },
-    { path: "/signup", element: <SignupPage /> },
+    { path: "/signup", element: <SignUp /> },
+
 
     {
       path: "add-public-tender",
@@ -47,6 +49,12 @@ const RoutesConfig: React.FC = () => {
       element: <HomePage />,
       children: [{ path: "", element: <TenderSidebarPage/> }],
     },
+
+ 
+   
+  
+ 
+
   ]);
 
   return routes;
