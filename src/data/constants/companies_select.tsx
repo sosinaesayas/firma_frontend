@@ -1,7 +1,7 @@
 
 import React from "react";
 import Select, { MultiValue } from "react-select";
-import { fetchCompanies } from "../../features/create_tenders/components/limited_tender/limited_tender_api";
+import { fetchCompanies } from "../../features/post_tenders/limited_tender/limited_tender_api";
 
 interface Company {
     value: string;

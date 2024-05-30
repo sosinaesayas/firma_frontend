@@ -1,52 +1,42 @@
 import { useState, useEffect } from "react";
 import Select, { MultiValue } from "react-select";
-import { LimitedTenderData } from "../../../../data/interfaces/limitedData";
+import { TenderFormData } from "../../../../data/interfaces/tenderFormData";
+import { postTenderForm } from "../public_tender_slice";
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch } from "../../../../store/store";
+import { RootState } from "../../../../store/store";
 import category_datas from "../../../../data/constants/tender_category";
 import { fetchTenders } from "../../../get_tenders/tender_table_slice";
 import { regions } from "../../../../data/constants/regions";
-import initialDirectPurchaseTender from "../../../../data/constants/direct_purchase_initial";
-import { useLimitedTender } from "../../../../hooks/useLimitedTender";
-import { postLimitedTenderForm } from "../limited_tender/limited_tender_slice";
-import CompaniesSelect from "../../../../data/constants/companies_select";
-const AddDirectPurchaseTender = () => {
+import initialPublicTender from "../../../../data/constants/public_tender_initial";
+
+
+const AddPublicTender = () => {
   const dispatch: AppDispatch = useDispatch();
   const navigate = useNavigate();
-  const {
-    status: formTenderStatus,
-    error: formTenderError,
-    submitLimitedTender,
-  } = useLimitedTender();
-  const [formData, setFormData] =
-    useState<LimitedTenderData>(initialDirectPurchaseTender);
-    useEffect(() => {
-      if (formTenderStatus === "succeeded") {
-        navigate("/tender-table");
-        // dispatch(fetchTenders());
-      }
-    }, [dispatch, formTenderStatus, navigate]);
-  
-
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    try {
-      const resultAction = await dispatch(postLimitedTenderForm(formData));
-      if (postLimitedTenderForm.fulfilled.match(resultAction)) {
-        navigate("/tender-table");
-        dispatch(fetchTenders());
-      } else if (postLimitedTenderForm.rejected.match(resultAction)) {
-        console.error(
-          "Failed to submit limited tender form:",
-          resultAction.error.message
-        );
-      }
-    } catch (error) {
-      console.error("An error occurred while submitting the form:", error);
+  const formTenderError = useSelector(
+    (state: RootState) => state.formTender.error
+  );
+  const formTenderStatus = useSelector(
+    (state: RootState) => state.formTender.status
+  );
+  const [formData, setFormData] = useState<TenderFormData>(initialPublicTender);
+  useEffect(() => {
+    if (formTenderStatus === "succeeded") {
+      navigate("/tender-table");
+      dispatch(fetchTenders());
     }
-  };
+  }, [dispatch, formTenderStatus, navigate]);
 
+  const handleSubmit = (e: any) => {
+    e.preventDefault();
+    dispatch(postTenderForm(formData))
+      .unwrap()
+      .catch((error) => {
+        console.log(error);
+      });
+  };
   const handleChange = (e: any) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
@@ -54,7 +44,6 @@ const AddDirectPurchaseTender = () => {
       [name]: value,
     }));
   };
-
   const handleSelectChange = (
     selectedOptions: MultiValue<{ value: string; label: string }>
   ) => {
@@ -64,6 +53,9 @@ const AddDirectPurchaseTender = () => {
       tenderCategory: selectedValues,
     }));
   };
+
+ 
+
 
   return (
     <div>
@@ -310,7 +302,7 @@ const AddDirectPurchaseTender = () => {
 
           <div className="flex flex-col">
             <label htmlFor="products" className="text-gray-700 mb-2">
-              Products
+              Proudcts
             </label>
             <input
               className="border border-gray-300 rounded-md px-4 py-2 mb-4"
@@ -319,21 +311,6 @@ const AddDirectPurchaseTender = () => {
               onChange={handleChange}
             />
           </div>
-
-         <div>
-          <label> Select a company</label>
-          <CompaniesSelect
-            handleCompanyChange={(selectedOptions) => {
-              const selectedValues = selectedOptions.map(
-                (option) => option.value
-              );
-              setFormData((prevData) => ({
-                ...prevData,
-                companies: selectedValues,
-              }));
-            }}
-          />
-         </div>
         </fieldset>
         <button
           type="submit"
@@ -341,13 +318,10 @@ const AddDirectPurchaseTender = () => {
         >
           Add Tender For Approval
         </button>
-        {/* {formTenderError && <p>{formTenderError}</p>} */}
+        {formTenderError && <p>{formTenderError}</p>}
       </form>
     </div>
   );
 };
 
-export default AddDirectPurchaseTender;
-
-
-
+export default AddPublicTender;

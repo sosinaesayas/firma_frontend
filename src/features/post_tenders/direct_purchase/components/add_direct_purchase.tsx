@@ -7,11 +7,11 @@ import { AppDispatch } from "../../../../store/store";
 import category_datas from "../../../../data/constants/tender_category";
 import { fetchTenders } from "../../../get_tenders/tender_table_slice";
 import { regions } from "../../../../data/constants/regions";
-import initialLimitedTender from "../../../../data/constants/limited_tender_inital";
+import initialDirectPurchaseTender from "../../../../data/constants/direct_purchase_initial";
 import { useLimitedTender } from "../../../../hooks/useLimitedTender";
-import { postLimitedTenderForm } from "./limited_tender_slice";
+import { postLimitedTenderForm } from "../../limited_tender/limited_tender_slice";
 import CompaniesSelect from "../../../../data/constants/companies_select";
-const AddLimitedTender = () => {
+const AddDirectPurchaseTender = () => {
   const dispatch: AppDispatch = useDispatch();
   const navigate = useNavigate();
   const {
@@ -20,7 +20,7 @@ const AddLimitedTender = () => {
     submitLimitedTender,
   } = useLimitedTender();
   const [formData, setFormData] =
-    useState<LimitedTenderData>(initialLimitedTender);
+    useState<LimitedTenderData>(initialDirectPurchaseTender);
     useEffect(() => {
       if (formTenderStatus === "succeeded") {
         navigate("/tender-table");
@@ -347,4 +347,7 @@ const AddLimitedTender = () => {
   );
 };
 
-export default AddLimitedTender;
+export default AddDirectPurchaseTender;
+
+
+

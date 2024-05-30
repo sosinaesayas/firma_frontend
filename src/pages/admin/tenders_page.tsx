@@ -1,5 +1,5 @@
-import PublicTender from "../../features/create_tenders/components/public_tender/public_tender";
-import TenderDropdown from "../../features/create_tenders/components/tender_dropdown";
+import PublicTender from "../../features/post_tenders/public_tender/components/public_tender";
+import TenderDropdown from "../../features/post_tenders/tender_dropdown";
 
 const TenderSidebarPage: React.FC = () => {
   return (
