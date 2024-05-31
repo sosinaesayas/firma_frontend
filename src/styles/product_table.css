@@ -1,0 +1,47 @@
+     .product-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 5px; 
+    }
+    
+    .product-table th,
+    .product-table td {
+      padding: 10px;
+      border: none; 
+    }
+    
+    .product-table th {
+      background-color: blue;
+      color: white;
+      
+    }
+    
+
+    .product-table input {
+      width: calc(100% - 20px); 
+      padding: 5px;
+      border: none;
+      border-radius: 5px;
+      outline: none;
+      background-color: white;
+      box-shadow:2px 2px 2px 2px rgba(0, 0, 0, 0.1);
+    }
+   .add-button-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   }
+   .add-button-container button{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    background-color: rgb(64, 64, 88);
+    width: 150px;
+    height: 35px;
+    color: white;
+    border-radius:15px ;
+
+   }
+
+
+
+    

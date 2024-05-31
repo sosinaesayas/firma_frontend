@@ -14,6 +14,8 @@ import CompanyHomePage from "../pages/company/company_home"
 import BidTender1 from "../pages/company/bid_tender_1"
 import AllTenders from "../pages/company/all_tenders"
 import BidExpressionOfInterestPage from "../pages/company/bid_expression_of_interest"
+import BidTender2 from "../pages/company/bid_tender_2";
+
 const RoutesConfig: React.FC = () => {
   const routes = useRoutes([
     {
@@ -71,6 +73,10 @@ const RoutesConfig: React.FC = () => {
       {
         path: "bid-tender-1",
         element:<BidTender1/>
+      },
+      {
+        path: "bid-tender-2",
+        element:<BidTender2/>
       },
      ]
     },

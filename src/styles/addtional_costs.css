@@ -1,0 +1,38 @@
+.form-container {
+    width: 100%;
+  }
+  
+  .custom-form {
+    width: 100%;
+  }
+  
+  .form-row {
+    display: flex;
+    align-items: center;
+  }
+  
+  .form-item {
+    flex: 1;
+    margin-right: 10px;
+  }
+  
+  .form-item:first-child {
+    width: 40%; 
+  }
+  
+  .form-item:last-child {
+    margin-right: 0;
+  }
+  
+  label {
+    display: block;
+  }
+  
+  input[type="text"] {
+    width: 100%;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+  }
+  
