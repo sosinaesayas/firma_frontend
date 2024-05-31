@@ -24,7 +24,7 @@ const AddPublicTender = () => {
   const [formData, setFormData] = useState<TenderFormData>(initialPublicTender);
   useEffect(() => {
     if (formTenderStatus === "succeeded") {
-      navigate("/tender-table");
+      navigate("/admin/");
       dispatch(fetchTenders());
     }
   }, [dispatch, formTenderStatus, navigate]);

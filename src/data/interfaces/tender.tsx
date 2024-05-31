@@ -8,9 +8,10 @@ interface TenderTableData{
     closingDate:string,
     status: string, 
     applied : string | null,
-    purchased : string | null,
+    purchased : boolean | null,
     tenderCategory : string,
     cpoAmount : number | null,
+    
 }
 
 

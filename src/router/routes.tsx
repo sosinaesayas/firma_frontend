@@ -13,6 +13,7 @@ import ProtectedRoute from "./protected_route";
 import CompanyHomePage from "../pages/company/company_home"
 import BidTender1 from "../pages/company/bid_tender_1"
 import AllTenders from "../pages/company/all_tenders"
+import BidExpressionOfInterestPage from "../pages/company/bid_expression_of_interest"
 const RoutesConfig: React.FC = () => {
   const routes = useRoutes([
     {
@@ -62,6 +63,10 @@ const RoutesConfig: React.FC = () => {
       {
         path: "",
         element: <AllTenders />,
+      },
+      {
+        path : "bid-eoi/:tenderId", 
+        element : <BidExpressionOfInterestPage/>
       },
       {
         path: "bid-tender-1",

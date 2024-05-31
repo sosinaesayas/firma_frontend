@@ -39,3 +39,16 @@ export const patchRequest = async (url: string, data: any) => {
   });
   return response;
 }
+
+export const postFormDataRequestApi = async (url: string, formData: FormData) => {
+  const token = localStorage.getItem("token");
+  console.log(formData)
+  const response = await api.post(url, formData, {
+    headers: {
+      "Content-Type": "multipart/form-data",
+      Authorization: `Bearer ${token}`,
+    },
+  });
+
+  return response;
+};
