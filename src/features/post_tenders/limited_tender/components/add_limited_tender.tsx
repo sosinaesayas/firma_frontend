@@ -11,13 +11,13 @@ import initialLimitedTender from "../../../../data/constants/limited_tender_init
 import { useLimitedTender } from "../../../../hooks/useLimitedTender";
 import { postLimitedTenderForm } from "../limited_tender_slice";
 import CompaniesSelect from "../../../../data/constants/companies_select";
+import ProductsSelect from "../../../../components/shared/products";
 const AddLimitedTender = () => {
   const dispatch: AppDispatch = useDispatch();
   const navigate = useNavigate();
   const {
     status: formTenderStatus,
-    error: formTenderError,
-    submitLimitedTender,
+    error: formTenderError
   } = useLimitedTender();
   const [formData, setFormData] =
     useState<LimitedTenderData>(initialLimitedTender);
@@ -32,6 +32,7 @@ const AddLimitedTender = () => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
+      console.log("Form data:", formData);
       const resultAction = await dispatch(postLimitedTenderForm(formData));
       if (postLimitedTenderForm.fulfilled.match(resultAction)) {
         navigate("/tender-table");
@@ -308,17 +309,20 @@ const AddLimitedTender = () => {
             </select>
           </div>
 
-          <div className="flex flex-col">
-            <label htmlFor="products" className="text-gray-700 mb-2">
-              Products
-            </label>
-            <input
-              className="border border-gray-300 rounded-md px-4 py-2 mb-4"
-              id="products"
-              name="products"
-              onChange={handleChange}
-            />
-          </div>
+          <div>
+          <label> Select products</label>
+          <ProductsSelect
+            handleProductChange={(selectedOptions) => {
+              const selectedValues = selectedOptions.map(
+                (option) => option.pr_number
+              );
+              setFormData((prevData) => ({
+                ...prevData,
+                products: selectedValues,
+              }));
+            }}
+          />
+         </div>
 
          <div>
           <label> Select a company</label>

@@ -10,6 +10,7 @@ import category_datas from "../../../../data/constants/tender_category";
 import { fetchTenders } from "../../../get_tenders/tender_table_slice";
 import { regions } from "../../../../data/constants/regions";
 import initialPublicTender from "../../../../data/constants/public_tender_initial";
+import ProductsSelect from "../../../../components/shared/products";
 
 
 const AddPublicTender = () => {
@@ -300,17 +301,20 @@ const AddPublicTender = () => {
             </select>
           </div>
 
-          <div className="flex flex-col">
-            <label htmlFor="products" className="text-gray-700 mb-2">
-              Proudcts
-            </label>
-            <input
-              className="border border-gray-300 rounded-md px-4 py-2 mb-4"
-              id="products"
-              name="products"
-              onChange={handleChange}
-            />
-          </div>
+          <div>
+          <label> Select products</label>
+          <ProductsSelect
+            handleProductChange={(selectedOptions) => {
+              const selectedValues = selectedOptions.map(
+                (option) => option.pr_number
+              );
+              setFormData((prevData) => ({
+                ...prevData,
+                products: selectedValues,
+              }));
+            }}
+          />
+         </div>
         </fieldset>
         <button
           type="submit"

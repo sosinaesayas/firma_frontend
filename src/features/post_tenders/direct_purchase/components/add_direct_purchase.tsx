@@ -11,13 +11,13 @@ import initialDirectPurchaseTender from "../../../../data/constants/direct_purch
 import { useLimitedTender } from "../../../../hooks/useLimitedTender";
 import { postLimitedTenderForm } from "../../limited_tender/limited_tender_slice";
 import CompaniesSelect from "../../../../data/constants/companies_select";
+import ProductsSelect from "../../../../components/shared/products";
 const AddDirectPurchaseTender = () => {
   const dispatch: AppDispatch = useDispatch();
   const navigate = useNavigate();
   const {
     status: formTenderStatus,
     error: formTenderError,
-    submitLimitedTender,
   } = useLimitedTender();
   const [formData, setFormData] =
     useState<LimitedTenderData>(initialDirectPurchaseTender);
@@ -67,6 +67,15 @@ const AddDirectPurchaseTender = () => {
 
   return (
     <div>
+      {formTenderError && (
+        <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4">
+          <strong className="font-bold">Failed to submit tender form!</strong>
+          <span className="block sm:inline">
+           {formTenderError}
+            </span>
+            </div>
+            )
+            }
       <form onSubmit={handleSubmit}>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <div className="flex flex-col">
@@ -308,17 +317,20 @@ const AddDirectPurchaseTender = () => {
             </select>
           </div>
 
-          <div className="flex flex-col">
-            <label htmlFor="products" className="text-gray-700 mb-2">
-              Products
-            </label>
-            <input
-              className="border border-gray-300 rounded-md px-4 py-2 mb-4"
-              id="products"
-              name="products"
-              onChange={handleChange}
-            />
-          </div>
+          <div>
+          <label> Select products</label>
+          <ProductsSelect
+            handleProductChange={(selectedOptions) => {
+              const selectedValues = selectedOptions.map(
+                (option) => option.pr_number
+              );
+              setFormData((prevData) => ({
+                ...prevData,
+                products: selectedValues,
+              }));
+            }}
+          />
+         </div>
 
          <div>
           <label> Select a company</label>
