@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { FaCloudUploadAlt, FaCheckCircle, FaCalendarAlt } from "react-icons/fa";
 import { useDropzone } from "react-dropzone";
 import { useDispatch, useSelector } from "react-redux";
 import DatePicker from "react-datepicker";
+import PhoneInput from "react-phone-input-2";
+import "react-phone-input-2/lib/style.css";
 import "react-datepicker/dist/react-datepicker.css";
 import { RootState, AppDispatch } from "../../../../store/store";
 import {
@@ -15,6 +18,7 @@ import { signUpCompany } from "../company_auth_api";
 import { setResponseMessage, clearResponseMessage } from "../responseSlice";
 
 const SignUpForm: React.FC = () => {
+  const navigate = useNavigate();
   const [isPasswordMatch, setIsPasswordMatch] = useState(false);
   const [logoUploaded, setLogoUploaded] = useState(false);
   const [legalDocumentUploaded, setLegalDocumentUploaded] = useState(false);
@@ -121,43 +125,40 @@ const SignUpForm: React.FC = () => {
       return;
     }
 
-    if (Object.keys(newErrors).length !== 0) {
-      try {
-        const response = await signUpCompany(signup);
+    try {
+      const response = await signUpCompany(signup);
 
-        if (response.status === 200) {
-          dispatch(
-            setResponseMessage({
-              message: "Registration successful!",
-              type: "success",
-            })
-          );
-        } else {
-          dispatch(
-            setResponseMessage({
-              message: `Registration failed. ${response.data}`,
-              type: "error",
-            })
-          );
-        }
-        console.log(response);
-      } catch (err) {
-        console.log("Error:", err);
+      if (response.status === 201) {
         dispatch(
           setResponseMessage({
-            message: `Registration failed. "${err}`,
+            message: "Registration successful!",
+            type: "success",
+          })
+        );
+        navigate("/otp-verification");
+      } else {
+        dispatch(
+          setResponseMessage({
+            message: `Registration failed. ${response.data}`,
             type: "error",
           })
         );
       }
-
-      // Hide the message after 3 seconds
-      setTimeout(() => {
-        dispatch(clearResponseMessage());
-      }, 3000);
-    } else {
-      console.log("Validation failed");
+      console.log(response);
+    } catch (err) {
+      console.log("Error:", err);
+      dispatch(
+        setResponseMessage({
+          message: `Registration failed. "${err}`,
+          type: "error",
+        })
+      );
     }
+
+    // Hide the message after 3 seconds
+    setTimeout(() => {
+      dispatch(clearResponseMessage());
+    }, 3000);
   };
 
   const verifyEmail = () => {
@@ -255,6 +256,19 @@ const SignUpForm: React.FC = () => {
                     onChange={handleInputChange("phone")}
                     className="w-full p-2 border rounded-l-full w-1/2 bg-white"
                   />
+                  {/* <PhoneInput
+                    country={"et"}
+                    // value={phoneNumber}
+                    // onChange={handlePhoneNumberChange}
+                    containerStyle={{ width: "100%" }}
+                    inputStyle={{
+                      width: "50%",
+                      padding: "0.5rem",
+                      borderRadius: "9999px 0 0 9999px",
+                      backgroundColor: "white",
+                    }}
+                    buttonStyle={{ borderRadius: "9999px 0 0 9999px" }}
+                  /> */}
                   <button
                     className="bg-[#3328a8] text-white px-3 rounded-r-full"
                     onClick={verifyPhone}
@@ -531,7 +545,8 @@ const SignUpForm: React.FC = () => {
                         : null
                     }
                     onChange={handleChange}
-                    dateFormat="yyyy-MM-dd"
+                    dateFormat="MM/dd/yyyy"
+                    placeholderText="mm/dd/yyyy"
                     required={true}
                     id="date-of-establishment"
                     className="w-full text-xl mt-1 pr-10 p-2 border rounded-full bg-white"
@@ -554,6 +569,16 @@ const SignUpForm: React.FC = () => {
                   onChange={handleInputChange("servicesProvided")}
                   className="w-2/3 mt-1 p-2 border rounded-full bg-white"
                 />
+                {/* {servicesOptions.map(service => (
+                <div key={service}>
+                  <input
+                    type="checkbox"
+                    checked={services.includes(service)}
+                    onChange={() => handleServiceChange(service)}
+                  />
+                  {service}
+                </div>
+              ))} */}
               </div>
               {errors.servicesProvided && (
                 <p className="text-red-500 text-sm">

@@ -57,7 +57,7 @@ const companyAuthSlice = createSlice({
   initialState,
   reducers: {
     setField: (
-      state,
+      state: any,
       action: PayloadAction<{ field: keyof CompanyAuthState; value: any }>
     ) => {
       state[action.payload.field] = action.payload.value;
