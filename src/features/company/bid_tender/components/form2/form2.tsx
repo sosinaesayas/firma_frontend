@@ -9,6 +9,7 @@ import ProductTable from "./product_table";
 import AdditionalCostsForm from "./additional_costs_form";
 import CompanyInfo from "./company_profile_info";
 import initialCompanyProfile from "../../../../../data/constants/company_info_initial"
+import InvoiceForm from "./invoiceForm"
 
 
 
@@ -78,8 +79,49 @@ const Form2 = () => {
           </div>
           <h1>Additional Costs</h1>
           <div><AdditionalCostsForm/></div>
- 
+
+      <div className="max-w-lg  p-4">
+  <form className="space-y-4">
+    <div>
+      <label className="block text-gray-700 mb-2">Notes</label>
+      <textarea 
+        placeholder="Notes - any relevant information not already covered"
+        className="w-full border border-gray-300 rounded-md px-4 py-2 h-32 resize-none"
+      ></textarea>
+    </div>
+    <div>
+      <label className="block text-gray-700 mb-2">Terms</label>
+      <textarea 
+        placeholder="Terms and conditions, late fees, payment methods, delivery schedule"
+        className="w-full border border-gray-300 rounded-md px-4 py-2 h-32 resize-none"
+      ></textarea>
+    </div>
+{/* 
+    <div className="flex flex-col">
+      <div>
+      <label>Tax</label>
+      <input/>
+      <input/>
+      </div>
+      <div>
+        <label>Discount</label>
+      <input/>
+      <input/>
+      </div>
+    </div> */}
+    <div>
+      <InvoiceForm/>
+    </div>
+   
+
+  </form>
+</div>
+
+
+
+
           </div>
+
 
 </div>
   );
