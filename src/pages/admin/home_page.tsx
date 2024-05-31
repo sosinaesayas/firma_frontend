@@ -7,16 +7,15 @@ const HomePage: React.FC = () => (
     <div className='w-1/5 '>
       <Sidebar />
     </div>
-<<<<<<< HEAD
+    
     {/* <div> <TenderDropdown /></div> */}
     <div className='w-4/5 bg-red p-6 overflow-auto'>
-=======
     <div className='flex-grow bg-red p-4 overflow-auto'>
->>>>>>> 86668520cdf4f153fe3963bd7652b608082cd10b
       <Outlet />
     </div>
-    
   </div>
+  </div>
+  
 );
 
 export default HomePage;

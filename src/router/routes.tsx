@@ -10,8 +10,9 @@ import PostTendersPage from "../pages/admin/tenders_page";
 import Product from "../pages/products_trial";
 import SignUp from "../pages/company/SignUp";
 import ProtectedRoute from "./protected_route";
-import CompanyHomePage from "../pages/company/company_home"
-import BidTender1 from "../pages/company/bid_tender_1"
+import CompanyHomePage from "../pages/company/company_home";
+import BidTender1 from "../pages/company/bid_tender_1";
+import BidTender2 from "../pages/company/bid_tender_2";
 
 const RoutesConfig: React.FC = () => {
   const routes = useRoutes([
@@ -62,6 +63,10 @@ const RoutesConfig: React.FC = () => {
       {
         path: "bid-tender-1",
         element:<BidTender1/>
+      },
+      {
+        path: "bid-tender-2",
+        element:<BidTender2/>
       },
      ]
     },
