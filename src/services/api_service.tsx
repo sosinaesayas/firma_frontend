@@ -4,23 +4,13 @@ export const api = axios.create({
   baseURL: "http://localhost:3000/api",
 });
 
-// export const postRequest = async (url: string, data: any) => {
-//   const token = localStorage.getItem("token");
-//   const response = await api.post(url, data, {
-//     headers: {
-//       Authorization: `Bearer ${token}`,
-//     },
-//   });
-//   return response;
-// };
-
 export const postRequest = async (
   url: string,
   data: any,
-  headers: string | null
+  headers?: string | null
 ) => {
   const token = localStorage.getItem("token");
-  console.log("token is " + token);
+
   const response = await api.post(url, data, {
     headers: {
       "Content-Type": headers ?? "application/json",
@@ -32,9 +22,9 @@ export const postRequest = async (
   return response;
 };
 
-
 export const getRequest = async (url: string) => {
   const token = localStorage.getItem("token");
+
   const response = await api.get(url, {
     headers: {
       Authorization: `Bearer ${token}`,
@@ -51,4 +41,20 @@ export const patchRequest = async (url: string, data: any) => {
     },
   });
   return response;
-}
+};
+
+export const postFormDataRequestApi = async (
+  url: string,
+  formData: FormData
+) => {
+  const token = localStorage.getItem("token");
+  console.log(formData);
+  const response = await api.post(url, formData, {
+    headers: {
+      "Content-Type": "multipart/form-data",
+      Authorization: `Bearer ${token}`,
+    },
+  });
+
+  return response;
+};
