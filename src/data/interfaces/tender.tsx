@@ -1,13 +1,17 @@
 interface TenderTableData{
-    id : string , 
-    title : string ,
-    description : string ,   
-    tenderType : string ,
-    endDate : string , 
-    status : string ,
-    deadlineInDays : number ,
-    tenderCategory : string[],
-    cpoAmount: number ,
+    id: string,
+    _id : string,
+    deadlineInDays: number,
+    title:string,
+    description: string,
+    tenderType: string,
+    closingDate:string,
+    status: string, 
+    applied : string | null,
+    purchased : boolean | null,
+    tenderCategory : string,
+    cpoAmount : number | null,
+    
 }
 
 

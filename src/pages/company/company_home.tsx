@@ -16,7 +16,7 @@ const CompanyHomePage: React.FC = () => (
     <div className='w-1/5'>
       <CompanySidebar />
     </div>
-    <div className='flex-grow bg-red p-4 overflow-auto'>
+    <div className='w-10/12 bg-red p-4 overflow-auto'>
       <Outlet />
     </div>
     

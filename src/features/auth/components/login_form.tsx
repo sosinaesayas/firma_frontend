@@ -15,7 +15,8 @@ const LoginForm: React.FC = () => {
 
   useEffect(() => {
     if (loginStatus === "succeeded") {
-      navigate("/admin/");
+      const role = localStorage.getItem("role");
+      role == "Admin" ? navigate("/admin/") : navigate("/company/");
     }
   }, [loginStatus, navigate]);
 

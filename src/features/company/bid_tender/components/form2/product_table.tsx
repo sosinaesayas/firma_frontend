@@ -1,12 +1,6 @@
-import { useState } from 'react';
 import '../../../../../styles/product_table.css';
 
 const ProductTable = () => {
-  const [rows, setRows] = useState([{}]);
-
-  const addRow = () => {
-    setRows([...rows, {}]);
-  };
 
   return (
     <div className="form-container p-1 pb-4">
@@ -20,23 +14,6 @@ const ProductTable = () => {
           </tr>
         </thead>
         <tbody>
-          {rows.map((row, index) => (
-            <tr key={index}>
-              <td>
-                <input type="text" name={`item-${index}`} />
-              </td>
-              <td>
-                <input type="text" name={`unit-${index}`} />
-              </td>
-              <td>
-                <input type="text" name={`quantity-${index}`} />
-              </td>
-              <td>
-                <input type="text" name={`unitPrice-${index}`} />
-              </td>
-             
-            </tr>
-          ))}
           <tr>
             <td>
               <input type="text" name={`item-new`} />
@@ -54,9 +31,7 @@ const ProductTable = () => {
           </tr>
         </tbody>
       </table>
-      <div className="add-button-container">
-        <button type="button" onClick={addRow}>Add Line Item</button>
-      </div>
+     
     </div>
   );
 };

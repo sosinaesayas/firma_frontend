@@ -10,8 +10,10 @@ import PostTendersPage from "../pages/admin/tenders_page";
 import Product from "../pages/products_trial";
 import SignUp from "../pages/company/SignUp";
 import ProtectedRoute from "./protected_route";
-import CompanyHomePage from "../pages/company/company_home";
-import BidTender1 from "../pages/company/bid_tender_1";
+import CompanyHomePage from "../pages/company/company_home"
+import BidTender1 from "../pages/company/bid_tender_1"
+import AllTenders from "../pages/company/all_tenders"
+import BidExpressionOfInterestPage from "../pages/company/bid_expression_of_interest"
 import BidTender2 from "../pages/company/bid_tender_2";
 
 const RoutesConfig: React.FC = () => {
@@ -60,6 +62,14 @@ const RoutesConfig: React.FC = () => {
       path : "/company/",
       element :  <CompanyHomePage />,
      children : [
+      {
+        path: "",
+        element: <AllTenders />,
+      },
+      {
+        path : "bid-eoi/:tenderId", 
+        element : <BidExpressionOfInterestPage/>
+      },
       {
         path: "bid-tender-1",
         element:<BidTender1/>
