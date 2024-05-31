@@ -7,6 +7,7 @@ import CreateTender from "../pages/admin/create_tender";
 import PublicTender from '../pages/public_tender';
 import Product from "../pages/products_trial";
 import SignUp from '../pages/company/SignUp';
+import OTP from '../pages/company/OTP';
 
 const RoutesConfig: React.FC = () => {
   const routes = useRoutes([
@@ -20,7 +21,8 @@ const RoutesConfig: React.FC = () => {
 
     { path: "/login", element: <LoginPage /> },
     { path: "/signup", element: <SignupPage /> },
-    { path: "/company_signup", element: <SignUp /> },
+    { path: "/company/signup", element: <SignUp /> },
+    { path: "/otp-verification", element: <OTP />},
    
     { 
       path: "create_tender", 
