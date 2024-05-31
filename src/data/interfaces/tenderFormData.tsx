@@ -1,7 +1,7 @@
-import { ProductsData } from "./productsData";
 
 export interface TenderFormData {
     tender_id: string;
+    additionalCost: string[];
     startDate: string;
     endDate: string;
     tenderCategory: string[];
@@ -16,7 +16,7 @@ export interface TenderFormData {
     sampleAddress: string;
     currency: string;
     region: string;
-    products: ProductsData[];
+    products: string[];
     tenderType : string, 
     remark : string
   }

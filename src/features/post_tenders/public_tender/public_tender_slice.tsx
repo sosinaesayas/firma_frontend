@@ -70,9 +70,9 @@ const formTenderSlice = createSlice({
       })
       .addCase(postTenderForm.rejected, (state, action) => {
         state.status = "failed";
-        state.error = action.payload as string;
+        state.error = action.payload.message;
       });
   },
 });
 
-export default formTenderSlice.reducer;
+export default formTenderSlice;

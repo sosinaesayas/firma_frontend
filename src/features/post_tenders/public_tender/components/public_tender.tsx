@@ -11,16 +11,16 @@ import { fetchTenders } from "../../../get_tenders/tender_table_slice";
 import { regions } from "../../../../data/constants/regions";
 import initialPublicTender from "../../../../data/constants/public_tender_initial";
 import ProductsSelect from "../../../../components/shared/products";
-
+import AdditionalCostsSelect from "../../../../components/shared/additional_cost";
 
 const AddPublicTender = () => {
   const dispatch: AppDispatch = useDispatch();
   const navigate = useNavigate();
   const formTenderError = useSelector(
-    (state: RootState) => state.formTender.error
+    (state: RootState) => state.formTender?.error
   );
   const formTenderStatus = useSelector(
-    (state: RootState) => state.formTender.status
+    (state: RootState) => state.formTender?.status
   );
   const [formData, setFormData] = useState<TenderFormData>(initialPublicTender);
   useEffect(() => {
@@ -54,9 +54,6 @@ const AddPublicTender = () => {
       tenderCategory: selectedValues,
     }));
   };
-
- 
-
 
   return (
     <div>
@@ -302,19 +299,39 @@ const AddPublicTender = () => {
           </div>
 
           <div>
-          <label> Select products</label>
-          <ProductsSelect
-            handleProductChange={(selectedOptions) => {
-              const selectedValues = selectedOptions.map(
-                (option) => option.pr_number
-              );
-              setFormData((prevData) => ({
-                ...prevData,
-                products: selectedValues,
-              }));
-            }}
-          />
-         </div>
+            <label> Select products</label>
+            <ProductsSelect
+              handleProductChange={(selectedOptions) => {
+                console.log(selectedOptions);
+                const selectedValues = selectedOptions.map(
+                  (option) => option.value
+                );
+                console.log(selectedValues);
+                setFormData((prevData) => ({
+                  ...prevData,
+                  products: selectedValues,
+                }));
+              }}
+            />
+          </div>
+
+          <div>
+            <label> Select Additional Cost</label>
+            <AdditionalCostsSelect
+              handleAdditionalCostChange={(selectedOptions) => {
+                const selectedValues = selectedOptions.map((option) => option.value);
+                setFormData((prevData) => ({
+                  ...prevData,
+                  additionalCost: selectedValues,
+                }));
+              }}
+            />
+          </div>
+
+          <div>
+            <label> Select a company</label>
+           
+          </div>
         </fieldset>
         <button
           type="submit"

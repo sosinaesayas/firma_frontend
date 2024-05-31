@@ -12,6 +12,7 @@ import { useLimitedTender } from "../../../../hooks/useLimitedTender";
 import { postLimitedTenderForm } from "../../limited_tender/limited_tender_slice";
 import CompaniesSelect from "../../../../data/constants/companies_select";
 import ProductsSelect from "../../../../components/shared/products";
+import AdditionalCostsSelect from "../../../../components/shared/additional_cost";
 const AddDirectPurchaseTender = () => {
   const dispatch: AppDispatch = useDispatch();
   const navigate = useNavigate();
@@ -318,34 +319,49 @@ const AddDirectPurchaseTender = () => {
           </div>
 
           <div>
-          <label> Select products</label>
-          <ProductsSelect
-            handleProductChange={(selectedOptions) => {
-              const selectedValues = selectedOptions.map(
-                (option) => option.pr_number
-              );
-              setFormData((prevData) => ({
-                ...prevData,
-                products: selectedValues,
-              }));
-            }}
-          />
-         </div>
+            <label> Select products</label>
+            <ProductsSelect
+              handleProductChange={(selectedOptions) => {
+                console.log(selectedOptions);
+                const selectedValues = selectedOptions.map(
+                  (option) => option.value
+                );
+                console.log(selectedValues);
+                setFormData((prevData) => ({
+                  ...prevData,
+                  products: selectedValues,
+                }));
+              }}
+            />
+          </div>
 
-         <div>
-          <label> Select a company</label>
-          <CompaniesSelect
-            handleCompanyChange={(selectedOptions) => {
-              const selectedValues = selectedOptions.map(
-                (option) => option.value
-              );
-              setFormData((prevData) => ({
-                ...prevData,
-                companies: selectedValues,
-              }));
-            }}
-          />
-         </div>
+          <div>
+            <label> Select Additional Cost</label>
+            <AdditionalCostsSelect
+              handleAdditionalCostChange={(selectedOptions) => {
+                const selectedValues = selectedOptions.map((option) => option.value);
+                setFormData((prevData) => ({
+                  ...prevData,
+                  additionalCost: selectedValues,
+                }));
+              }}
+            />
+          </div>
+
+          <div>
+            <label> Select a company</label>
+            <CompaniesSelect
+              handleCompanyChange={(selectedOptions) => {
+                const selectedValues = selectedOptions.map(
+                  (option) => option.value
+                );
+                setFormData((prevData) => ({
+                  ...prevData,
+                  companies: selectedValues,
+                }));
+              }}
+            />
+          </div>
         </fieldset>
         <button
           type="submit"

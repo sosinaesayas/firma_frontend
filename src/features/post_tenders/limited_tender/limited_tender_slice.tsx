@@ -38,7 +38,7 @@ const limitedTenderSlice = createSlice({
       })
       .addCase(postLimitedTenderForm.rejected, (state, action: PayloadAction<any>) => {
         state.status = 'failed';
-        state.error = action.payload;
+        state.error = action.payload.message;
       });
   },
 });
