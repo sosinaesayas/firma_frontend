@@ -3,6 +3,7 @@ import authReducer from "../features/auth/auth_slice";
 import themeConfigReducer from './theme_config_slice';
 import tenderTableReducer from '../features/get_tenders/tender_table_slice';
 import formTenderReducer from "../features/post_tenders/public_tender/public_tender_slice";
+import responseReducer from "../features/auth/company/responseSlice";
 import productsReducer from "../features/post_tenders/products_form/products_form_slice";
 import expressionInterestReducer from "../features/post_tenders/expression_of_interest/expression_interest_slice";
 import limitedTenderReducer from "../features/post_tenders/limited_tender/limited_tender_slice";
@@ -20,10 +21,10 @@ const store = configureStore({
     expressionInterest: expressionInterestReducer,
     limitedTender: limitedTenderReducer,
     form: formReducer,
+    response: responseReducer,
     // directPurchase: directPurchaseReducer
-    getAllTendersForCompany: getAllTendersForCompanyReducer, 
+    getAllTendersForCompany: getAllTendersForCompanyReducer,
     bidExpressionOfInterest: bidExpressionOfInterestSlice,
-
   },
 });
 
