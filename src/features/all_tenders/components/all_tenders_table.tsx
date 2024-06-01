@@ -116,7 +116,11 @@ const CompanyTenderTable = ({ data }: TenderTableProps) => {
                           Purchase Tender
                         </li>
                       )}
-
+                      <li className="hover:text-blue-400 cursor-pointer" onClick={()=>{
+                        navigate(`/clarifications/${data._id}`)
+                      }}>
+                       See clarifications
+                      </li>
                       <li className="hover:text-blue-400 cursor-pointer">
                         Download
                       </li>

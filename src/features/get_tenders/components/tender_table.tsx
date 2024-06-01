@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { IoIosMore } from 'react-icons/io';
 import Pagination from '../../../components/common/Pagination';
 import TenderTableData from '@/data/interfaces/tender';
-
+import { useNavigate } from "react-router-dom";
 interface TenderTableProps {
   data: TenderTableData[];
 }
@@ -11,7 +11,7 @@ const TenderTable = ({ data }: TenderTableProps) => {
   const [activeRowId, setActiveRowId] = useState<string | null>(null);
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 15;
-
+  const navigate = useNavigate();
   const handleClickAction = (tenderId: string) => {
     if (activeRowId === tenderId) {
       setActiveRowId(null);
@@ -68,6 +68,11 @@ const TenderTable = ({ data }: TenderTableProps) => {
                 {activeRowId === data.id && (
                   <div className="absolute z-30 border border-slate-200 right-10 -bottom-16 bg-white px-6 py-2 rounded-lg shadow">
                     <ul className="text-sm flex text-gray-500 flex-col items-center gap-4">
+                       <li className="hover:text-blue-400 cursor-pointer" onClick={()=>{
+                        navigate(`/admin/clarifications/${data._id}`)
+                      }}>
+                       See clarifications
+                      </li>
                       <li className="hover:text-blue-400 cursor-pointer">Download</li>
                       <li className="hover:text-blue-400 cursor-pointer">Print</li>
                       <li className="hover:text-red-400 cursor-pointer">Delete</li>
