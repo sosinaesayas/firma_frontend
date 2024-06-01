@@ -9,6 +9,7 @@ import CreateDirectPurchaseTender from "../pages/admin/create_direct_purchase_te
 import PostTendersPage from "../pages/admin/tenders_page";
 import Product from "../pages/products_trial";
 import SignUp from "../pages/company/SignUp";
+import OTP from "../pages/company/OTP";
 import ProtectedRoute from "./protected_route";
 import CompanyHomePage from "../pages/company/company_home"
 import BidTender1 from "../pages/company/bid_tender_1"
@@ -81,8 +82,9 @@ const RoutesConfig: React.FC = () => {
      ]
     },
 
-    { path: "/", element: <LoginPage /> },
+    { path: "/login", element: <LoginPage /> },
     { path: "/signup", element: <SignUp /> },
+    { path: "/otp-verification", element: <OTP /> },
   ]);
 
   return routes;
