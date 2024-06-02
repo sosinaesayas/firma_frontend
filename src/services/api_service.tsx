@@ -27,6 +27,8 @@ export const getRequest = async (url: string) => {
       Authorization: `Bearer ${token}`,
     },
   });
+
+  console.log(response)
   return response;
 };
 
@@ -47,6 +49,7 @@ export const postFormDataRequestApi = async (url: string, formData: FormData) =>
     headers: {
       "Content-Type": "multipart/form-data",
       Authorization: `Bearer ${token}`,
+      enctype : "multipart/form-data"
     },
   });
 
