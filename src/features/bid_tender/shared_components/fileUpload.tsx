@@ -1,6 +1,10 @@
 import React, { useRef, useState, useEffect } from "react";
 
-const FileUpload: React.FC = () => {
+interface FileUploadProps {
+  onFilesChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+}
+
+const FileUpload: React.FC<FileUploadProps> = ({ onFilesChange }) => {
   const inputRef = useRef<HTMLInputElement>(null);
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [progress, setProgress] = useState(0);
@@ -18,6 +22,7 @@ const FileUpload: React.FC = () => {
       } else {
         setImagePreview(null);
       }
+      onFilesChange(event); // Call the prop function
     }
   };
 
@@ -61,6 +66,9 @@ const FileUpload: React.FC = () => {
       } else {
         setImagePreview(null);
       }
+      onFilesChange({
+        target: { files: event.dataTransfer.files }
+      } as React.ChangeEvent<HTMLInputElement>);
     }
   };
 
@@ -73,17 +81,14 @@ const FileUpload: React.FC = () => {
   }, [imagePreview]);
 
   return (
-    <div className="flex flex-col items-center justify-center  bg-gray-100 p-4">
-     
-         
-     <input
+    <div className="flex flex-col items-center justify-center bg-gray-100 p-4">
+      <input
         ref={inputRef}
         type="file"
         onChange={handleFileChange}
         className="hidden"
         id="inputFile"
       />
-    
 
       {!selectedFile && (
         <div

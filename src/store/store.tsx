@@ -1,4 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
+
 import authReducer from "../features/auth/auth_slice";
 import themeConfigReducer from './theme_config_slice';
 import tenderTableReducer from '../features/get_tenders/tender_table_slice';
@@ -10,6 +11,8 @@ import limitedTenderReducer from "../features/post_tenders/limited_tender/limite
 import bidExpressionOfInterestSlice from "../features/bid_tender/bid_eoi/bid_eoi_slice";
 import formReducer from "../features/auth/company/company_auth_slice";
 import getAllTendersForCompanyReducer from "../features/all_tenders/all_tenders_slice";
+import clarificationSlice from '../features/clarification/clarification_slice';
+import bidTenderSlice from '../features/bid_tender/bid_all_tenders/bid_tender_slice';
 const store = configureStore({
   reducer: {
     auth: authReducer,
@@ -23,8 +26,14 @@ const store = configureStore({
     // directPurchase: directPurchaseReducer
     getAllTendersForCompany: getAllTendersForCompanyReducer, 
     bidExpressionOfInterest: bidExpressionOfInterestSlice,
+    clarification: clarificationSlice, 
+    bidTender: bidTenderSlice
 
   },
+  middleware :  (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: false,
+    }),
 });
 
 export type AppDispatch = typeof store.dispatch;
