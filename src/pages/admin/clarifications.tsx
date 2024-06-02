@@ -1,4 +1,5 @@
 
+
 import ClarificationList from "../../features/clarification/components/clarification_list";
 import React from "react";
 const AdminClarificationsPage: React.FC = () => {

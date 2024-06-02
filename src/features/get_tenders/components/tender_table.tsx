@@ -69,7 +69,9 @@ const TenderTable = ({ data }: TenderTableProps) => {
                   <div className="absolute z-30 border border-slate-200 right-10 -bottom-16 bg-white px-6 py-2 rounded-lg shadow">
                     <ul className="text-sm flex text-gray-500 flex-col items-center gap-4">
                        <li className="hover:text-blue-400 cursor-pointer" onClick={()=>{
-                        navigate(`/clarifications/${data._id}`)
+
+                        navigate(`/admin/clarifications/${data._id}`)
+
                       }}>
                        See clarifications
                       </li>

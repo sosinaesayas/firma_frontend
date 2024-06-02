@@ -11,10 +11,15 @@ import Product from "../pages/products_trial";
 import SignUp from "../pages/company/SignUp";
 import ProtectedRoute from "./protected_route";
 import CompanyHomePage from "../pages/company/company_home";
+
+import AllTenders from "../pages/company/all_tenders";
+
+
 import TechnicalDocument from "../pages/company/technical_document";
 import AllTenders from "../pages/company/all_tenders";
 import BidExpressionOfInterestPage from "../pages/company/bid_expression_of_interest";
 import FinancialQuotation from "../pages/company/financial_quotation";
+
 import CompanyClarificationsPage from "../pages/company/clarifications";
 import AdminClarificationsPage from "../pages/admin/clarifications";
 
@@ -63,14 +68,19 @@ const RoutesConfig: React.FC = () => {
     },
     {
       path: "/company/",
+
       element:(  <ProtectedRoute allowedRoles={["company"]}>
       <CompanyHomePage />
     </ProtectedRoute>),
+
       children: [
         {
           path: "",
           element: <AllTenders />,
         },
+
+       
+      
         {
           path: "bid-eoi/:tenderId",
           element: <BidExpressionOfInterestPage />,
@@ -83,6 +93,7 @@ const RoutesConfig: React.FC = () => {
           path: "bid-tender-2/:tenderId",
           element: <FinancialQuotation />,
         },
+
         {
           path: "clarifications/:tenderId",
           element: <CompanyClarificationsPage />,

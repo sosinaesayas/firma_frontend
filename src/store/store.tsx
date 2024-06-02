@@ -8,11 +8,13 @@ import productsReducer from "../features/post_tenders/products_form/products_for
 import expressionInterestReducer from "../features/post_tenders/expression_of_interest/expression_interest_slice";
 import limitedTenderReducer from "../features/post_tenders/limited_tender/limited_tender_slice";
 // import directPurchaseReducer from "../features/create_tenders/components/direct_purchase/direct_purchase_slice"
-import bidExpressionOfInterestSlice from "../features/bid_tender/bid_eoi/bid_eoi_slice";
+
 import formReducer from "../features/auth/company/company_auth_slice";
 import getAllTendersForCompanyReducer from "../features/all_tenders/all_tenders_slice";
 import clarificationSlice from '../features/clarification/clarification_slice';
+
 import bidTenderSlice from '../features/bid_tender/bid_all_tenders/bid_tender_slice';
+
 const store = configureStore({
   reducer: {
     auth: authReducer,
@@ -25,8 +27,10 @@ const store = configureStore({
     form: formReducer,
     // directPurchase: directPurchaseReducer
     getAllTendersForCompany: getAllTendersForCompanyReducer, 
-    bidExpressionOfInterest: bidExpressionOfInterestSlice,
+   
     clarification: clarificationSlice, 
+   
+    bidExpressionOfInterest: bidExpressionOfInterestSlice,
     bidTender: bidTenderSlice
 
   },

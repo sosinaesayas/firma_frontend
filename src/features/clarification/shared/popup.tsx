@@ -1,3 +1,4 @@
+
 import React, { useEffect } from 'react';
 
 interface PopupProps {
@@ -71,3 +72,4 @@ const Popup: React.FC<PopupProps> = ({ title, isOpen, onClose, onSend, status })
 };
 
 export default Popup;
+
