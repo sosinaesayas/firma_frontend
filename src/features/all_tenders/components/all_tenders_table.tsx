@@ -101,6 +101,9 @@ const CompanyTenderTable = ({ data }: TenderTableProps) => {
                           onClick={() => {
                             if (data.tenderType === "Expression of Interest") {
                               navigate(`/company/bid-eoi/${data._id}`);
+                            }else {
+                              navigate(`/company/bid-tender/${data._id}`);
+                            
                             }
                           }}
                         >
@@ -116,7 +119,11 @@ const CompanyTenderTable = ({ data }: TenderTableProps) => {
                           Purchase Tender
                         </li>
                       )}
-
+                      <li className="hover:text-blue-400 cursor-pointer" onClick={()=>{
+                        navigate(`/clarifications/${data._id}`)
+                      }}>
+                       See clarifications
+                      </li>
                       <li className="hover:text-blue-400 cursor-pointer">
                         Download
                       </li>
