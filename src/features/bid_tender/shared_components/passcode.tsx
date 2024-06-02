@@ -1,8 +1,10 @@
 import React, { useState } from "react";
-
+import {updatePasscode} from "../bid_all_tenders/bid_tender_slice";
+import { useDispatch} from "react-redux";
+import { AppDispatch } from "../../../store/store";
 const PasscodeCard: React.FC = () => {
   const [passcode, setPasscode] = useState<string[]>(Array(6).fill(""));
-
+  const dispatch: AppDispatch = useDispatch();
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>, index: number) => {
     const newPasscode = [...passcode];
     newPasscode[index] = e.target.value.slice(-1);
@@ -11,6 +13,11 @@ const PasscodeCard: React.FC = () => {
     
     if (e.target.value && index < 5) {
       (document.getElementById(`passcode-${index + 1}`) as HTMLInputElement).focus();
+    }
+
+    // if passcode is complete, dispatch the passcode to the store
+    if (index === 5 && newPasscode.every((digit) => digit)) {
+      dispatch(updatePasscode(newPasscode.join("")));
     }
   };
 

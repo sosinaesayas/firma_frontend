@@ -101,6 +101,9 @@ const CompanyTenderTable = ({ data }: TenderTableProps) => {
                           onClick={() => {
                             if (data.tenderType === "Expression of Interest") {
                               navigate(`/company/bid-eoi/${data._id}`);
+                            }else {
+                              navigate(`/company/bid-tender/${data._id}`);
+                            
                             }
                           }}
                         >

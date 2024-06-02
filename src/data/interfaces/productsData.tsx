@@ -19,4 +19,5 @@ export default interface ProductData {
         activity_num: string | undefined | null;
         sub_qty: string;
         unit_serv: string | undefined | null;
+        _id: string;
     }

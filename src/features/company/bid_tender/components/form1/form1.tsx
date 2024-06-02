@@ -3,8 +3,6 @@ import FileBrowse from "../fileBrowse";
 import PasscodeCard from "../passcodeCard";
 import UploadCEO from "../uploadCeo"
 import { Link } from "react-router-dom";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faArrowLeft } from '@fortawesome/free-solid-svg-icons'
 import { useNavigate } from "react-router-dom";
 
 
@@ -23,7 +21,7 @@ const Form1 = () => {
     className="text-gray-700 hover:text-gray-900"
     style={{ marginTop: '-0.25rem', marginRight: '1rem' }} // Adjust margins as needed
   >
-    <FontAwesomeIcon icon={faArrowLeft} className="h-6 w-6" />
+  
   </button>
   <p className="text-gray-900">
     Hey company, this is the text we have for now. Hey company, this is the
