@@ -13,6 +13,7 @@ import formReducer from "../features/auth/company/company_auth_slice";
 import getAllTendersForCompanyReducer from "../features/all_tenders/all_tenders_slice";
 import clarificationSlice from '../features/clarification/clarification_slice';
 import bidTenderSlice from '../features/bid_tender/bid_all_tenders/bid_tender_slice';
+import gradeFinancialDocSlice from '../features/grade_financial_doc/grade_financial_slice';
 const store = configureStore({
   reducer: {
     auth: authReducer,
@@ -27,7 +28,8 @@ const store = configureStore({
     getAllTendersForCompany: getAllTendersForCompanyReducer, 
     bidExpressionOfInterest: bidExpressionOfInterestSlice,
     clarification: clarificationSlice, 
-    bidTender: bidTenderSlice
+    bidTender: bidTenderSlice, 
+    financialDocSlice: gradeFinancialDocSlice
 
   },
   middleware :  (getDefaultMiddleware) =>
