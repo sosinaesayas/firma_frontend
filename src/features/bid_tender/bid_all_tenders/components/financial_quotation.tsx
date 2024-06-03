@@ -1,5 +1,3 @@
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
 import ProductTable from "./product_table";
 import AdditionalCostsForm from "./additional_costs_form";
@@ -65,7 +63,7 @@ const FinancialQuotation = () => {
           className="text-gray-700 hover:text-gray-900"
           style={{ marginTop: "-0.25rem", marginRight: "1rem" }}
         >
-          {/* <FontAwesomeIcon icon={faArrowLeft} className="h-6 w-6" /> */}
+         
         </button>
         <div className="flex flex-col space-y-2">
           <h1 className="text-2xl text-gray-900">{tenderDetail?.title}</h1>
@@ -89,17 +87,7 @@ const FinancialQuotation = () => {
               <label htmlFor="currency" className="text-gray-700 mb-2 mr-6">
                 Currency
               </label>
-              {/* <select
-                name="currency"
-                id="currency"
-                className="border border-gray-300 rounded-md px-4 py-2 mb-4"
-                value={formData.currency}
-                onChange={handleChange}
-              >
-                <option value="ETB">ETB</option>
-                <option value="USD">USD</option>
-                <option value="GBP">GBP</option>
-              </select> */}
+              
               <div>
                 ETB
               </div>

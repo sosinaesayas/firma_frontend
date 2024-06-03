@@ -329,7 +329,7 @@ const AddPublicTender = () => {
           </div>
 
           <div>
-            <label> Select a company</label>
+            {/* <label> Select a company</label> */}
            
           </div>
         </fieldset>

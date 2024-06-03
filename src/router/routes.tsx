@@ -12,17 +12,14 @@ import SignUp from "../pages/company/SignUp";
 import OTP from "../pages/company/OTP";
 import ProtectedRoute from "./protected_route";
 import CompanyHomePage from "../pages/company/company_home";
-
 import AllTenders from "../pages/company/all_tenders";
-
-
 import TechnicalDocument from "../pages/company/technical_document";
 import BidExpressionOfInterestPage from "../pages/company/bid_expression_of_interest";
 import FinancialQuotation from "../pages/company/financial_quotation";
-
 import CompanyClarificationsPage from "../pages/company/clarifications";
 import AdminClarificationsPage from "../pages/admin/clarifications";
-
+import ApplicationsPage from "../pages/admin/applications";
+import CreateProformaTender from "../pages/admin/create_proforma_tender"
 const RoutesConfig: React.FC = () => {
   const routes = useRoutes([
     {
@@ -56,12 +53,21 @@ const RoutesConfig: React.FC = () => {
           element: <CreateDirectPurchaseTender />,
         },
         {
+          path: "add-pro-forma-tender",
+          element: <CreateProformaTender />,
+        },
+      
+        {
           path: "post-tenders",
           element: <PostTendersPage />,
         },
         {
           path: "clarifications/:tenderId",
           element: <AdminClarificationsPage />,
+        },
+        {
+          path: "applications",
+          element: <ApplicationsPage/>,
         },
 
       ],
