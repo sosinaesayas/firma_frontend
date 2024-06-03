@@ -18,7 +18,7 @@ const LoginForm: React.FC = () => {
       const role = localStorage.getItem("role");
       role == "Admin" ? navigate("/admin/") : navigate("/company/");
     }
-  }, [loginStatus, navigate]);
+  }, [loginStatus, navigate , dispatch]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -57,7 +57,7 @@ const LoginForm: React.FC = () => {
         <button className={styles.btnn}>Login</button>
 
         {loginError && (
-          <p className="text-orange-700 text-center">{loginError}</p>
+          <p className="text-orange-700 text-center">{loginError?.response?.data?.message }</p>
         )}
 
         <div className={styles.signup}>

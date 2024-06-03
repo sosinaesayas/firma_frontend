@@ -21,13 +21,15 @@ const ClarificationList: React.FC = () => {
         <div>
             
             {getClarificationStatus === 'loading' && <div>Loading...</div>}
-            {getClarificationStatus === 'succeeded' && clarifications.map(
+            {getClarificationStatus === 'succeeded' && clarifications.length > 0 && clarifications?.map(
                 (clarification: Clarification, index: number) => (
              <>
                 <ClarificationComponent clarification={clarification} index={index} key={clarification._id} />
                 {clarification.canReply && <AnswerClarification clarificationId={clarification._id} />}
              </>
             ))}
+
+            {getClarificationStatus === 'succeeded' && clarifications.length === 0 && <div className="mt-5 w-10/12 flex align-middle">No clarifications</div>}
             {getClarificationStatus === 'failed' && <div>{getClarificationError}</div>}
         </div>
     );

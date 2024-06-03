@@ -4,7 +4,6 @@ import { FaCloudUploadAlt, FaCheckCircle, FaCalendarAlt } from "react-icons/fa";
 import { useDropzone } from "react-dropzone";
 import { useDispatch, useSelector } from "react-redux";
 import DatePicker from "react-datepicker";
-import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 import "react-datepicker/dist/react-datepicker.css";
 import { RootState, AppDispatch } from "../../../../store/store";

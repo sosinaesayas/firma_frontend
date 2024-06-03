@@ -51,11 +51,10 @@ export const postBidForm = createAsyncThunk(
         formData.append(`additionalCost[${index}]`, cost.toString());
       });
       formData.append("passcode", formDataInterface.passcode);
-      formDataInterface.technicalDocument.forEach((file, index) => {
+      formDataInterface.technicalDocument.forEach((file) => {
         formData.append(`technicalDocument`, file);
       });
-
-      formDataInterface.cpoDocument.forEach((file, index) => {
+      formDataInterface.cpoDocument.forEach((file) => {
         formData.append(`cpoDocument`, file);
       }
       );

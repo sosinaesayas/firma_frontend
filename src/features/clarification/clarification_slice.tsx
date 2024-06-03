@@ -23,6 +23,7 @@ const initialState: ClarificationState = {
 export const getClarifications = createAsyncThunk('clarification/getClarifications', async (tenderId: string, { rejectWithValue }) => {
     try {
         const response = await getClarificationListApi(tenderId);
+        console.log("response is" , response.data)
         return response.data;
     } catch (error) {
         const errorMessage = (error as Error).message;

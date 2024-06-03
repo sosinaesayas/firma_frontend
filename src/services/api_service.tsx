@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export const api = axios.create({
-  baseURL: "http://localhost:3000/api",
+  baseURL: "https://procurement-backend-firma.onrender.com/api",
 });
 
 export const postRequest = async (url: string, data: any , headers ?  : string | null) => {
@@ -14,7 +14,7 @@ export const postRequest = async (url: string, data: any , headers ?  : string |
     },
   });
 
-  console.log(response)
+
   return response;
 };
 

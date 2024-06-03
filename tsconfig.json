@@ -26,5 +26,6 @@
     }
   },
   "include": ["src", "router/routes.tsx"],
-  "references": [{ "path": "./tsconfig.node.json" }]
+  "references": [{ "path": "./tsconfig.node.json" }],
+  "outDir": "./dist/"
 }

@@ -13,12 +13,12 @@ import DiscountAndTimeComponent from "./discount_and_time";
 import { useParams } from "react-router-dom";
 import { useEffect } from "react";
 import { getTenderById } from "../bid_tender_slice";
-import {postBidForm , updateTenderId , updatePostBidState} from "../bid_tender_slice";
+import {postBidForm , updatePostBidState} from "../bid_tender_slice";
 import SuccessScreen from "../../../../components/animations/success";
 
 const FinancialQuotation = () => {
   const tenderDetail = useSelector((state: RootState) => state.bidTender.tenderDetail);
-  const {formData , postBidError , postBidStatus} = useSelector((state: RootState) => state.bidTender);
+  const {formData ,  postBidStatus , error,  postBidError, status} = useSelector((state: RootState) => state.bidTender);
   const dispatch: AppDispatch = useDispatch();
   const navigate = useNavigate();
   const handleBackClick = () => {
@@ -59,6 +59,7 @@ const FinancialQuotation = () => {
     <div className="p-6 mb-10 space-y-6">
       <div className="relative bg-white shadow-[0_-5px_10px_0_rgba(0,0,0,0.1)] rounded-lg p-6 mb-6 w-full border border-gray-200 flex items-start">
         <button
+          title="Back to all tenders"
           onClick={handleBackClick}
           className="text-gray-700 hover:text-gray-900"
           style={{ marginTop: "-0.25rem", marginRight: "1rem" }}
@@ -158,7 +159,8 @@ const FinancialQuotation = () => {
        <p>This tender requires a physical sample to be shared with Ethiopost. Please send your physical samples to <strong>{tenderDetail.sampleAddress}</strong>please send your samples before the deadline. You can continue to submit this tender.</p>
            </div>
    }
-
+  {postBidError && <div className="text-red-500">{postBidError}</div>}
+  {error && <div className="text-red-500">{error}</div>}
       <div className="flex flex-row justify-end mb-6 ">
           <button onClick = {onButtonClick} className="mt-4 bg-blue-500 rounded-lg pt-1 pb-1 pr-3 pl-3 text-white flex items-center">
            Submit
