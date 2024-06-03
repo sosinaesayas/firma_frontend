@@ -24,7 +24,7 @@ const TenderDropdown = () => {
         navigate(`/admin/add-expression-interest-tender`);
         break;
       case 'Pro Forma Tender':
-        // navigate(`/admin/add-pro-forma-tender`);
+        navigate(`/admin/add-pro-forma-tender`);
         break;
       default:
         break;
