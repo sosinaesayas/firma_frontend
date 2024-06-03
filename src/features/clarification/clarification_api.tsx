@@ -1,3 +1,5 @@
+
+
 import {getRequest , postRequest} from "../../services/api_service";
 
 export const getClarificationListApi = async (tenderId: string) => {
@@ -11,4 +13,3 @@ export const askClarificationApi = async (data: any) => {
 export const answerClarificationApi = async (data: any) => {
   return postRequest("/admin/add-clarification-reply", data);
 };
-

@@ -1,9 +1,8 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-interface CompanyAuthState {
+type CompanyAuthState = {
   isEmailVerified: boolean;
   isPhoneVerified: boolean;
-  isPasswordMatch: boolean;
   representativeName: string;
   email: string;
   phone: string;
@@ -25,16 +24,15 @@ interface CompanyAuthState {
   businessRegisterNo: File | null;
   vatNo: File | null;
   tinNo: File | null;
-}
+};
 
 const initialState: CompanyAuthState = {
   isEmailVerified: false,
   isPhoneVerified: false,
-  isPasswordMatch: false,
   representativeName: "",
   email: "",
   phone: "",
-  country: "",
+  country: "Ethiopia",
   password: "",
   confirmPassword: "",
   role: "",
@@ -59,13 +57,10 @@ const companyAuthSlice = createSlice({
   initialState,
   reducers: {
     setField: (
-      state,
+      state: any,
       action: PayloadAction<{ field: keyof CompanyAuthState; value: any }>
     ) => {
       state[action.payload.field] = action.payload.value;
-    },
-    setIsPasswordMatch: (state) => {
-      state.isPasswordMatch = state.password === state.confirmPassword;
     },
     setIsEmailVerified: (state, action: PayloadAction<boolean>) => {
       state.isEmailVerified = action.payload;
@@ -75,19 +70,23 @@ const companyAuthSlice = createSlice({
     },
     setFiles: (
       state,
-      action: PayloadAction<{ field: "logo" | "legalDocument"; file: File }>
+      action: PayloadAction<{
+        field:
+          | "logo"
+          | "legalDocument"
+          | "businessRegisterNo"
+          | "businessLicenseNo"
+          | "vatNo"
+          | "tinNo";
+        file: File;
+      }>
     ) => {
       state[action.payload.field] = action.payload.file;
     },
   },
 });
 
-export const {
-  setField,
-  setIsPasswordMatch,
-  setIsEmailVerified,
-  setIsPhoneVerified,
-  setFiles,
-} = companyAuthSlice.actions;
+export const { setField, setIsEmailVerified, setIsPhoneVerified, setFiles } =
+  companyAuthSlice.actions;
 
 export default companyAuthSlice.reducer;

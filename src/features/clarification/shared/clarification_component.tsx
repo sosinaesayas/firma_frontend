@@ -1,7 +1,6 @@
 import React from "react";
 import { Clarification, ClarificationReply } from "../../../data/interfaces/clarification";
 
-// create a function that formats a time from Iso string to "May 15, 2021, 12:00 PM"
 const formatDate = (date: string) => {
   const options = {
     year: "numeric",
@@ -21,33 +20,40 @@ interface Props {
 const ClarificationComponent: React.FC<Props> = ({ clarification, index }) => {
   return (
     <>
-      <div className="border-b-black my-10">
-        <h2 className="my-5 text-lg">
-          Clarification #{index + 1} | Asked by {clarification.user.companyName}
-        </h2>
-        <h3 className="my-5">
-          Asked on {formatDate(clarification.date)}, Answered on{" "}
-          {formatDate(
-           clarification.replies[0]?.date
-          )}
-        </h3>
-        <div className="flex-row">
-          <h2>Question :</h2>
-          <div>
-            <h3>{clarification?.question  ?? ''}</h3>
+      <div className="bg-white shadow-lg rounded-lg p-6 my-6">
+        <div className="border-b border-gray-300 pb-6 mb-6">
+          <h2 className="text-lg font-semibold mb-2 text-blue-700">
+            Clarification #{index + 1} | Asked by {clarification.user.companyName}
+          </h2>
+          <h3 className="text-sm text-gray-600 mb-2">
+            Asked on {formatDate(clarification.date)}, Answered on{" "}
+            {formatDate(
+             clarification.replies[0]?.date
+            )}
+          </h3>
+          <div className="flex items-start mb-4">
+            <h2 className="mr-2 font-semibold text-gray-700">Question :</h2>
+            <div>
+              <p className="text-sm text-gray-800">{clarification?.question ?? ''}</p>
+            </div>
           </div>
-        </div>
 
-        <div className="flex-row">
-          <h2>Answers :</h2>
-          <div>
-            <h3>{clarification.replies.length === 0  ? "Not answered by Ethiopost admins." :   clarification.replies.map(
-              (reply  : ClarificationReply, index  : number) =>  <>
-              <h3> Answer {index+ 1} </h3>  { reply.reply}
-              <br></br>
-              </>
-            
-            )}</h3>
+          <div className="flex items-start">
+            <h2 className="mr-2 font-semibold text-gray-700">Answers :</h2>
+            <div>
+              <div className="space-y-2">
+                {clarification.replies.length === 0 ? (
+                  <p className="text-sm text-gray-800">Not answered by Ethiopost admins.</p>
+                ) : (
+                  clarification.replies.map((reply: ClarificationReply, index: number) => (
+                    <div key={index}>
+                      <p className="text-sm font-semibold text-blue-700">Answer {index + 1}</p>
+                      <p className="text-sm text-gray-800">{reply.reply}</p>
+                    </div>
+                  ))
+                )}
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -56,3 +62,4 @@ const ClarificationComponent: React.FC<Props> = ({ clarification, index }) => {
 };
 
 export default ClarificationComponent;
+

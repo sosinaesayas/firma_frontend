@@ -1,3 +1,4 @@
+
 export interface Clarification{
     _id: string;
     question: string | null;
@@ -25,4 +26,3 @@ export  interface ClarificationReply {
     updatedAt: string;
     __v: number;
 }
-
