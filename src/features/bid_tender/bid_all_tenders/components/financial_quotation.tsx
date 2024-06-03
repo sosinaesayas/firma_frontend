@@ -15,10 +15,12 @@ import DiscountAndTimeComponent from "./discount_and_time";
 import { useParams } from "react-router-dom";
 import { useEffect } from "react";
 import { getTenderById } from "../bid_tender_slice";
-import {postBidForm , updateTenderId} from "../bid_tender_slice";
+import {postBidForm , updateTenderId , updatePostBidState} from "../bid_tender_slice";
+import SuccessScreen from "../../../../components/animations/success";
+
 const FinancialQuotation = () => {
   const tenderDetail = useSelector((state: RootState) => state.bidTender.tenderDetail);
-  const formData = useSelector((state: RootState) => state.bidTender.formData);
+  const {formData , postBidError , postBidStatus} = useSelector((state: RootState) => state.bidTender);
   const dispatch: AppDispatch = useDispatch();
   const navigate = useNavigate();
   const handleBackClick = () => {
@@ -38,7 +40,23 @@ const FinancialQuotation = () => {
       dispatch(getTenderById(tenderId || ""));
 
   }}
-  , [dispatch, tenderId , tenderDetail]);
+  , [dispatch, tenderId , tenderDetail , ]);
+  const updateBidStatus = () => {
+    setTimeout(() => {
+      dispatch(updatePostBidState());
+      navigate("/admin")
+    }
+    , 5000);
+  }
+  if (postBidStatus === 'succeeded') {
+    updateBidStatus();
+    return (<SuccessScreen message="Bid Submitted Successfully" />);
+    
+  }
+
+ 
+
+
   return (
     <div className="p-6 mb-10 space-y-6">
       <div className="relative bg-white shadow-[0_-5px_10px_0_rgba(0,0,0,0.1)] rounded-lg p-6 mb-6 w-full border border-gray-200 flex items-start">

@@ -9,12 +9,17 @@ interface BidTenderState {
   tenderDetail: TenderDetail | null;
   tenderStatus: "idle" | "loading" | "succeeded" | "failed";
   formData: FormDataInterface;
+  postBidStatus: "idle" | "loading" | "succeeded" | "failed";
+  postBidError: string | null | undefined;
 }
 
 const initialState: BidTenderState = {
   status: "idle",
   error: null,
   tenderDetail: null,
+  
+  postBidStatus: "idle",
+  postBidError : null,
   tenderStatus: "idle",
   formData: {
     tenderId: "",
@@ -110,7 +115,11 @@ const bidTenderSlice = createSlice({
     },
     updateCpoFiles(state, action: PayloadAction<File[]>) {
       state.formData.cpoDocument = action.payload;
+    }, 
+    updatePostBidState(state) {
+      state.postBidStatus = "idle";
     }
+
 
   },
   extraReducers: (builder) => {
@@ -122,8 +131,8 @@ const bidTenderSlice = createSlice({
         state.status = "succeeded";
       })
       .addCase(postBidForm.rejected, (state, action: PayloadAction<any>) => {
-        state.status = "failed";
-        state.error = action.payload.message;
+        state.postBidStatus= "failed";
+        state.postBidError= action.payload.message;
       })
       .addCase(getTenderById.pending, (state) => {
         state.tenderStatus = "loading";
@@ -156,7 +165,8 @@ export const {
   updatePasscode,
   updateFiles,
   updateDiscount,
-  updateCpoFiles
+  updateCpoFiles, 
+  updatePostBidState
 } = bidTenderSlice.actions;
 
 export default bidTenderSlice.reducer;

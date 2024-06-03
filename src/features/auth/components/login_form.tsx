@@ -54,16 +54,11 @@ const LoginForm: React.FC = () => {
           />
         </div>
 
-        <div className={styles.checkbox}>
-          <label htmlFor="remind-me">
-            <input id="remind-me" className="checkbox-input" type="checkbox" />
-            Remember me
-          </label>
-        </div>
-
-        {loginError && <p className={styles.error}>{loginError}</p>}
-
         <button className={styles.btnn}>Login</button>
+
+        {loginError && (
+          <p className="text-orange-700 text-center">{loginError}</p>
+        )}
 
         <div className={styles.signup}>
           <p>Not registered?</p>

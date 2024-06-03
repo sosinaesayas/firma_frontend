@@ -38,9 +38,15 @@ export const signup = createAsyncThunk('auth/signup', async (credentials: Signup
   }
 });
 
-export const login = createAsyncThunk('auth/login', async (credentials: { email: string; password: string }) => {
-  const response = await loginApi(credentials);
-  return response.data;
+export const login = createAsyncThunk('auth/login', async (credentials: { email: string; password: string } ,  { rejectWithValue }) => {
+ try {
+    const response = await loginApi(credentials);
+    return response.data;
+  } catch (error) {
+    
+    return rejectWithValue(error);
+  
+  }
 });
 
 const authSlice = createSlice({
@@ -59,7 +65,8 @@ const authSlice = createSlice({
       })
       .addCase(login.rejected, (state, action) => {
         state.status = 'failed';
-        state.error = action.payload as string; 
+        console.log(action.payload);
+        state.error = action.payload.response.data.message; 
       })
       .addCase(signup.pending, (state) => {
         state.status = 'loading';
